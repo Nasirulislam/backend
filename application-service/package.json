@@ -7,7 +7,9 @@
     "lint": "eslint . --ext .js",
     "dev": "nodemon .",
     "start": "node .",
-    "devDockerUp": "docker-compose --file docker-compose.yml up -d --no-deps --build"
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "dotenv": "^6.0.0",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "knex": "^0.15.2"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
