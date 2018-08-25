@@ -1,0 +1,31 @@
+{
+  "name": "GZM",
+  "version": "1.0.0",
+  "description": "Backend stack to support GZM apps",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "dev": "nodemon .",
+    "start": "node .",
+    "devDockerUp": "docker-compose --file docker-compose.yml up -d --no-deps --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gzm-stack/backend.git"
+  },
+  "author": "David Cordero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grzm-stack/backend/issues"
+  },
+  "homepage": "https://github.com/gzm-stack/backend#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "dotenv": "^6.0.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "nodemon": "^1.18.3"
+  }
+}
