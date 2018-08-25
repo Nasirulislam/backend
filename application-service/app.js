@@ -13,6 +13,15 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.disable('x-powered-by');
 
+// Routes
+const itemsControllers = require('./items/controllers');
+const itemsRoutes = require('./items/routes')(express.Router(), itemsControllers);
+
+const generalRoutes = require('./generalRoutes.js')(express.Router());
+
+app.use('/api', itemsRoutes);
+app.use('/', generalRoutes);
+
 // Database
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
