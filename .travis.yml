@@ -1,0 +1,11 @@
+dist: trusty
+sudo: required
+language: node_js
+os: linux
+node_js:
+  node
+install:
+  - cd application-service
+  - npm install
+script:
+  - npm run lint
