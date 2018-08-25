@@ -6,6 +6,6 @@ node_js:
   node
 install:
   - cd application-service
-  - npm install application-service
+  - npm install
 script:
   - npm run lint
