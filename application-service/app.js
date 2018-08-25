@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const mysql = require('mysql');
 
 // Config
-dotenv.config()
+dotenv.config();
 
 // App
 const app = express();
