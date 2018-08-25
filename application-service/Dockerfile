@@ -1,6 +1,6 @@
 FROM node:9.11.2
 
-LABEL GZM App <dcorderoramirez@gmail.com>
+LABEL GZM App
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
