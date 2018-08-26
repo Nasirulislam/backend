@@ -30,10 +30,9 @@ const db = mysql.createConnection({
     database: process.env.DATABASE_NAME
 });
 
+// Let's go...
 db.connect(function(err) {
     if (err) throw err;
-
-    // Listen
     app.listen(process.env.PORT, process.env.HOST);
     console.log(`Running on http://${process.env.HOST}:${process.env.PORT}`);
 });

@@ -1,7 +1,14 @@
 'use strict';
 
-const fetchItemsItemController = function(req, res) {
-    res.status(200).send('fetchItemsItemController');
+const Item = require('../models/item');
+
+const fetchItemsController = function(req, res) {
+
+    Item
+        .fetchAll()
+        .then(function(contacts) {
+            res.json({ contacts });
+        });
 };
 
-module.exports = fetchItemsItemController;
+module.exports = fetchItemsController;
