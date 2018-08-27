@@ -3,6 +3,7 @@
 Deletes the item with the given id
 
 **URL**
+
   /api/items/[item_id]
 
 **Method:**
