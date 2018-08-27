@@ -4,7 +4,15 @@ const Item = require('../models/item');
 
 const deleteItemController = function(req, res) {
 
-    Item.where('id', req.params.identifier)
+    let identifier;
+    try {
+        identifier = req.params.identifier;
+    }
+    catch(error) {
+        return res.status(400).send({ code: 1 });
+    }
+
+    Item.where('id', identifier)
         .destroy()
         .then(function(destroyed) {
             res.json({ destroyed });

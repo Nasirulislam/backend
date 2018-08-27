@@ -2,13 +2,26 @@
 
 const Item = require('../models/item');
 
-const fetchSingleItemItemController = function(req, res) {
+const fetchSingleItemController = function(req, res) {
 
-    Item.where('id', req.params.identifier)
+    let identifier;
+    try {
+        identifier = req.params.identifier;
+    }
+    catch(error) {
+        return res.status(400).send({ code: 1 });
+    }
+
+    Item.where('id', identifier)
         .fetchAll()
-        .then(function(items) {
-            res.json({ items });
+        .then(function(item) {
+            if(item) {
+                res.status(200).json({ item });
+            }
+            else {
+                return res.status(400).send({ code: 2 });
+            }
         });
 };
 
-module.exports = fetchSingleItemItemController;
+module.exports = fetchSingleItemController;
