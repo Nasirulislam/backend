@@ -4,7 +4,15 @@ const Item = require('../models/item');
 
 const updateItemController = function(req, res) {
 
-    Item.where('id', req.params.identifier)
+    let identifier;
+    try {
+        identifier = req.params.identifier;
+    }
+    catch(error) {
+        return res.status(400).send({ code: 1 });
+    }
+
+    Item.where('id', identifier)
         .fetch()
         .then(function(item) {
             item.save({
@@ -13,6 +21,9 @@ const updateItemController = function(req, res) {
             }).then(function(saved) {
                 res.json({ saved });
             });
+        })
+        .catch(function() {
+            res.status(400).send({ code: 5 });
         });
 };
 

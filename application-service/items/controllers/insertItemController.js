@@ -9,6 +9,8 @@ const insertItemController = function(req, res) {
         author_id: 2 // TODO: Needs auth to be implemented
     });
     
+    // TODO: validation
+
     item.save()
         .then(function(saved) {
             res.json({ saved });
