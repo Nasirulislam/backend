@@ -2,20 +2,20 @@
 
 Returns all the items matching a given criteria
 
-* **URL**
+**URL**
   /api/items
 
-* **Method:**
+**Method:**
   
   `GET`
   
-* **Parameters**
+**Parameters**
 
-* **Content-Type**
+**Content-Type**
 
   `application/json`
 
-* **Success Response:**
+**Success Response:**
   
 - List of items matching a given criteria
 
@@ -40,6 +40,6 @@ Returns all the items matching a given criteria
 }
 ```
  
-* **Error Response:**
+**Error Response:**
 
 Not documented

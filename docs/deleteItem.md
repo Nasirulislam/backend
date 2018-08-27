@@ -2,22 +2,22 @@
 
 Deletes the item with the given id
 
-* **URL**
+**URL**
   /api/items/[item_id]
 
-* **Method:**
+**Method:**
   
   `DELETE`
   
-* **Parameters**
+**Parameters**
 
 - item_id: The id of the item to be deleted
 
-* **Content-Type**
+**Content-Type**
 
   `application/json`
 
-* **Success Response:**
+**Success Response:**
 
 - Item successfully deleted
 
@@ -26,7 +26,7 @@ Deletes the item with the given id
 }
 ```
  
-* **Error Response:**
+**Error Response:**
 
 - Missing item id
 
