@@ -11,6 +11,8 @@ Deletes the item with the given id
   
 * **Parameters**
 
+- item_id: The id of the item to be deleted
+
 * **Content-Type**
 
   `application/json`
@@ -30,10 +32,34 @@ Item successfully removed
  
 * **Error Response:**
 
-Error 1: Missing item id
+- Missing item id
 
 ```json
 {
     code: 1
+}
+```
+
+- Unauthorized
+
+```json
+{
+    code: 3
+}
+```
+
+- Forbidden
+
+```json
+{
+    code: 4
+}
+```
+
+- Invalid item id
+
+```json
+{
+    code: 5
 }
 ```
