@@ -15,11 +15,11 @@ const fetchSingleItemController = function(req, res) {
     Item.where('id', identifier)
         .fetchAll()
         .then(function(item) {
-            if(item) {
+            if(item.is) {
                 res.status(200).json({ item });
             }
             else {
-                return res.status(400).send({ code: 2 });
+                res.status(400).send({ code: 2 });
             }
         });
 };

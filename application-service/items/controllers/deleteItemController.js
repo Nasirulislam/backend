@@ -14,8 +14,11 @@ const deleteItemController = function(req, res) {
 
     Item.where('id', identifier)
         .destroy()
-        .then(function(destroyed) {
-            res.json({ destroyed });
+        .then(function() {
+            res.status(200).json({ });
+        })
+        .catch(function() {
+            res.status(400).send({ code: 5 });
         });
 };
 
