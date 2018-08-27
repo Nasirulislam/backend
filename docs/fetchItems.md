@@ -17,13 +17,11 @@ Returns all the items matching a given criteria
 
 * **Success Response:**
   
-List of items matching a given criteria
+- List of items matching a given criteria
 
-* **Code:** 200 <br />
-  **Content:** 
-  ```json
-  {
-    "item":
+```json
+{
+    "items": [
         {
             "description": "My car is red and it is awesome",
             "title": "Awesome car",
@@ -37,10 +35,10 @@ List of items matching a given criteria
             "author": "5ae5049fe22c59001bf4a210",
             "created_at": 1526168002934,
             "item_id": "5af779c2ea97590143f299865"
-        },
-        [...]
-  }
-  ```
+        }
+    ]
+}
+```
  
 * **Error Response:**
 

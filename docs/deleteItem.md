@@ -18,17 +18,13 @@ Deletes the item with the given id
   `application/json`
 
 * **Success Response:**
-  
-List of items matching a given criteria
 
-* **Code:** 200 <br />
+- Item successfully deleted
 
-Item successfully removed 
-  **Content:** 
-  ```json
-  {
-  }
-  ```
+```json
+{
+}
+```
  
 * **Error Response:**
 
@@ -36,7 +32,7 @@ Item successfully removed
 
 ```json
 {
-    code: 1
+    "code": 1
 }
 ```
 
@@ -44,7 +40,7 @@ Item successfully removed
 
 ```json
 {
-    code: 3
+    "code": 3
 }
 ```
 
@@ -52,7 +48,7 @@ Item successfully removed
 
 ```json
 {
-    code: 4
+    "code": 4
 }
 ```
 
@@ -60,6 +56,6 @@ Item successfully removed
 
 ```json
 {
-    code: 5
+    "code": 5
 }
 ```
