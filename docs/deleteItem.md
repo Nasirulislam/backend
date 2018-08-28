@@ -29,11 +29,11 @@ Deletes the item with the given id
  
 **Error Response:**
 
-- Missing item id
+- Invalid item identifier
 
 ```json
 {
-    "code": 1
+    "code": 2
 }
 ```
 
@@ -50,13 +50,5 @@ Deletes the item with the given id
 ```json
 {
     "code": 4
-}
-```
-
-- Invalid item id
-
-```json
-{
-    "code": 5
 }
 ```

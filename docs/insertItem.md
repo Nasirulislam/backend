@@ -53,27 +53,11 @@ Insert the item with the given parameters
 }
 ```
 
-- Missing title
-
-```json
-{
-    "code": 6
-}
-```
-
-- Missing description
-
-```json
-{
-    "code": 7
-}
-```
-
 - Invalid title
 
 ```json
 {
-    "code": 8
+    "code": 5
 }
 ```
 
@@ -81,6 +65,6 @@ Insert the item with the given parameters
 
 ```json
 {
-    "code": 9
+    "code": 6
 }
 ```

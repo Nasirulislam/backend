@@ -6,7 +6,7 @@ const fetchItemsController = function(req, res) {
 
     Item.fetchAll()
         .then(function(items) {
-            res.json({ items });
+            res.status(200).json({ items });
         });
 };
 

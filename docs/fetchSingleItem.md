@@ -36,18 +36,10 @@ Returns the item with the given id
  
 **Error Response:**
 
-- Missing item id
+- Invalid item identifier
 
 ```json
 {
-    "code": 1
-}
-```
-
-- Invalid item id
-
-```json
-{
-    "code": 5
+    "code": 2
 }
 ```

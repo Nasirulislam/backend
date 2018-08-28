@@ -16,9 +16,21 @@ module.exports = {
             database : 'gzm'
         }
     },
-
+    test: {
+        client: 'sqlite3',
+        connection: ':memory:',
+        migrations: {
+            directory: __dirname + '/db/migrations'
+        },
+        seeds: {
+            directory: __dirname + '/db/seeds'
+        }
+    },
     production: {
         client: 'mysql',
+        migrations: {
+            directory: __dirname + '/db/migrations'
+        },
         connection: {
             host     : process.env.GZM_DATABASE_HOST,
             user     : process.env.GZM_DATABASE_USER,
