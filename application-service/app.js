@@ -2,7 +2,6 @@
 
 const express = require('express');
 const dotenv = require('dotenv');
-const mysql = require('mysql');
 
 // Config
 dotenv.config();
@@ -22,17 +21,8 @@ const generalRoutes = require('./generalRoutes.js')(express.Router());
 app.use('/api', itemsRoutes);
 app.use('/', generalRoutes);
 
-// Database
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME
-});
-
 // Let's go...
-db.connect(function(err) {
-    if (err) throw err;
-    app.listen(process.env.PORT, process.env.HOST);
-    console.log(`Running on http://${process.env.HOST}:${process.env.PORT}`);
-});
+const server = app.listen(process.env.PORT, process.env.HOST);
+console.log(`Running on http://${process.env.HOST}:${process.env.PORT}`);
+
+module.exports = server;

@@ -38,11 +38,11 @@ Update an item with the given parameters
  
 **Error Response:**
 
-- Missing item id
+- Invalid item id
 
 ```json
 {
-    "code": 1
+    "code": 2
 }
 ```
 
@@ -62,7 +62,7 @@ Update an item with the given parameters
 }
 ```
 
-- Invalid item id
+- Invalid title
 
 ```json
 {
@@ -70,18 +70,10 @@ Update an item with the given parameters
 }
 ```
 
-- Invalid title
-
-```json
-{
-    "code": 8
-}
-```
-
 - Invalid description
 
 ```json
 {
-    "code": 9
+    "code": 6
 }
 ```
