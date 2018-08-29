@@ -35,6 +35,9 @@ const insertItemController = function(req, res) {
         valueItem.save()
             .then(function(item) {
                 return res.status(200).json({ item });
+            })
+            .catch(function() {
+                return res.status(500);
             });
     });
 };
