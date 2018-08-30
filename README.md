@@ -10,6 +10,10 @@ The stack consists in two different services:
 
 ## Build and run
 
-The stack can be easily launched using the script `bootstrap.sh` in the root of the project. 
+The stack can be easily launched by using the script `bootstrap.sh` that can be found in the root path of this project. 
 
-As result of running this script a couple of Docker containers (application and database services respectively) will be created and launched.
+As result of running this script a couple of Docker containers (application and database services respectively) will be created and launched. By default they will start listening for request on the port 3000.
+
+## API Documentation
+
+Further information about the API endpoints can be found [here](./docs/index.md)

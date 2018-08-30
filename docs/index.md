@@ -7,5 +7,9 @@
     - [Delete item](./deleteItem.md)
     - [Update item](./updateItem.md)
 
+* Accounts:
+    - [Regiter](./registerAccount.md)
+    - [Login](./login.md)
 
-* [Error codes](./errorCodes.md)
+* Errors:
+    - [Error codes](./errorCodes.md)
