@@ -3,7 +3,7 @@
 
 | Code | Error                                   |
 |------|-----------------------------------------|
-| 1    | Invalid credentials                     |
+| 1    | Wrong credentials                       |
 | 2    | Invalid item identifier                 |
 | 3    | Unauthorized                            |
 | 4    | Forbidden                               |
@@ -14,3 +14,6 @@
 | 9    | Invalid username                        |
 | 10   | Invalid email                           |
 | 11   | Invalid password                        |
+| 12   | Missing token                           |
+| 13   | Invalid token                           |
+

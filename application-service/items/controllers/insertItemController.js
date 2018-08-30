@@ -14,7 +14,7 @@ const insertItemController = function(req, res) {
     const item = {
         title: req.body.title,
         description: req.body.description,
-        author_id: 2
+        author_id: req.user.id
     };
 
     Joi.validate(item, schema, function(error, value) {
