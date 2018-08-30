@@ -31,10 +31,15 @@ const insertItemController = function(req, res) {
             }
         }
         
-        const valueItem = new Item(value);
-        valueItem.save()
-            .then(function(item) {
-                return res.status(200).json({ item });
+        const newItem = new Item(value);
+        newItem.save()
+            .then(function(savedItem) {
+                return res.status(200).json({
+                    id: savedItem.get('id'),
+                    title: savedItem.get('title'),
+                    description: savedItem.get('description'),
+                    author_id: savedItem.get('author_id')
+                });
             })
             .catch(function() {
                 return res.status(500);

@@ -7,7 +7,7 @@ describe('/api/items', () => {
     beforeEach(async () => {
         await knex.migrate.latest();
         await knex.seed.run();
-        server = require('../../../app.js');
+        server = require('../../../app');
     });
 
     afterEach(() => {

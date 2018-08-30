@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
-    registerAccount: require('./registerAccountController')
+    registerAccount: require('./registerAccountController'),
+    login: require('./loginController')
 };
 

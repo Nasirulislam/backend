@@ -24,6 +24,12 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
+            expect(res.body).toEqual({ 
+                id: 3,
+                author_id: 2,
+                title: 'Hello', 
+                description: 'This is a dummy text'
+            });
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);
         });
