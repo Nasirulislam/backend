@@ -31,7 +31,7 @@ Login with the given credentials
  
 **Error Response:**
 
-- Invalid credentials
+- Wrong credentials
 
 ```json
 {

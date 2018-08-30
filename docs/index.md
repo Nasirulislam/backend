@@ -8,7 +8,7 @@
     - [Update item](./updateItem.md)
 
 * Accounts:
-    - [Regiter](./registerAccount.md)
+    - [Register](./registerAccount.md)
     - [Login](./login.md)
 
 * Errors:
