@@ -12,4 +12,4 @@
     - [Login](./login.md)
 
 * Errors:
-    - [Error codes](./errorCodes.md)
+    - [Error codes](./ErrorCodes.md)
