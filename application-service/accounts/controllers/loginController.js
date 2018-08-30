@@ -1,5 +1,6 @@
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const Account = require('../models/account');
 
@@ -17,7 +18,16 @@ const loginController = function(req, res) {
 
     Joi.validate(credentials, schema, async function(error, value) {
         if (error) {
-            return res.status(400).send({ });
+            let path = error.details[0].path[0];
+            if (path === 'email') {
+                return res.status(400).send({ code: 10 });
+            }
+            else if (path === 'password') {
+                return res.status(400).send({ code: 11 });
+            }
+            else {
+                return res.status(400).send({ code: error });
+            }
         }
 
         const accountByEmail = await Account.where('email', value.email).fetch();
@@ -29,9 +39,13 @@ const loginController = function(req, res) {
         if (!validPassword) {
             return res.status(400).json({ code: 1 });
         }
-        
-        res.status(200).json({ 'Validated' : 'LoginController' });
 
+        const token = jwt.sign({ 
+            id: accountByEmail.get('id'),
+            username: accountByEmail.get('username')
+        }, process.env.JWT_SECRET);
+
+        res.status(200).json({ token });
     });
 };
 
