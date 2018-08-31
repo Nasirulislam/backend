@@ -20,7 +20,7 @@ describe('/api/items', () => {
             // Given
             const itemId = '1';
             const item = { title: 'Edited item' };
-            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+            let token = jwt.sign({ id: 1 }, process.env.JWT_SECRET);
 
             // When
             const res = await request(server)
@@ -32,6 +32,23 @@ describe('/api/items', () => {
             expect(res.status).toBe(200);
             const resFetch = await request(server).get(`/api/items/${itemId}`);
             expect(resFetch.body.item.title).toEqual('Edited item');
+        });
+
+        it('should return error if the item is not owned by the logged in user', async () => {
+            // Given
+            const itemId = '1';
+            const item = { title: 'Edited item' };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/api/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(401);
+            expect(res.body.code).toBe(4);
         });
 
         it('should return error with a given invalid id', async () => {
@@ -63,7 +80,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(401);
-            expect(res.body.code).toBe(12);
+            expect(res.body.code).toBe(3);
         });
 
         it('should return error if token is not valid', async () => {
@@ -80,7 +97,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(401);
-            expect(res.body.code).toBe(13);
+            expect(res.body.code).toBe(4);
         });
     });
 });

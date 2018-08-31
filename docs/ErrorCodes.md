@@ -14,6 +14,3 @@
 | 9    | Invalid username                        |
 | 10   | Invalid email                           |
 | 11   | Invalid password                        |
-| 12   | Missing token                           |
-| 13   | Invalid token                           |
-

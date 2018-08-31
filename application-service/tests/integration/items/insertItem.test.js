@@ -48,7 +48,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(401);
-            expect(res.body.code).toBe(12);
+            expect(res.body.code).toBe(3);
         });
 
         it('should return error if token is not valid', async () => {
@@ -64,7 +64,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(401);
-            expect(res.body.code).toBe(13);
+            expect(res.body.code).toBe(4);
         });
 
         it('should return error when request misses title', async () => {

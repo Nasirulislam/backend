@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 function auth(req, res, next) {
     const token = req.header('x-auth-token');
     if (!token) {
-        return res.status(401).send({ code: 12 });
+        return res.status(401).send({ code: 3 });
     }
 
     try {
@@ -12,7 +12,7 @@ function auth(req, res, next) {
         next();
     }
     catch (ex) {
-        return res.status(401).send({ code: 13 });
+        return res.status(401).send({ code: 4 });
     }
 }
 
