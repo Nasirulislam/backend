@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 const imageController = function(req, res) {
     
-    const schema = { identifier: Joi.number() };
+    const schema = { identifier: Joi.string().alphanum() };
     const identifier = req.params.identifier;
     Joi.validate({ identifier }, schema, function(error, value) {
         if(error) {

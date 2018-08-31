@@ -14,19 +14,19 @@ describe('/api/items', () => {
     describe('GET /:id', () => {
         it('should return image with given valid id', async () => {
             // Given
-            const invalidImageId = '1';
+            const imageId = 'validImageId';
 
             // When
-            const res = await request(server).get(`/api/images/${invalidImageId}`);
+            const res = await request(server).get(`/api/images/${imageId}`);
 
             // Then
             expect(res.status).toBe(302);
-            expect(res.header['location']).toBe(process.env.IMAGES_BASE_URL + '1');
+            expect(res.header['location']).toBe(process.env.IMAGES_BASE_URL + imageId);
         });
 
         it('should return error with a given invalid id', async () => {
             // Given
-            const invalidImageId = 'Hi there I am not valid :(';
+            const invalidImageId = 'invalid image id';
 
             // When
             const res = await request(server).get(`/api/images/${invalidImageId}`);

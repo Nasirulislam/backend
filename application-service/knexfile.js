@@ -1,3 +1,5 @@
+var dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
 
@@ -10,10 +12,10 @@ module.exports = {
             directory: __dirname + '/db/seeds'
         },
         connection: {
-            host     : process.env.GZM_DATABASE_HOST,
-            user     : process.env.GZM_DATABASE_USER,
-            password : process.env.GZM_DATABASE_PASSWORD,
-            database : process.env.GZM_DATABASE_NAME
+            host     : process.env.DATABASE_HOST,
+            user     : process.env.DATABASE_USER,
+            password : process.env.DATABASE_PASSWORD,
+            database : process.env.DATABASE_NAME
         }
     },
     test: {
@@ -32,10 +34,10 @@ module.exports = {
             directory: __dirname + '/db/migrations'
         },
         connection: {
-            host     : process.env.GZM_DATABASE_HOST,
-            user     : process.env.GZM_DATABASE_USER,
-            password : process.env.GZM_DATABASE_PASSWORD,
-            database : process.env.GZM_DATABASE_NAME
+            host     : process.env.DATABASE_HOST,
+            user     : process.env.DATABASE_USER,
+            password : process.env.DATABASE_PASSWORD,
+            database : process.env.DATABASE_NAME
         }
     }
 };
