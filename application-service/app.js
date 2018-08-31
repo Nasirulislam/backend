@@ -19,10 +19,14 @@ const accountRoutes = require('./accounts/routes')(express.Router(), accountCont
 const itemsControllers = require('./items/controllers');
 const itemsRoutes = require('./items/routes')(express.Router(), itemsControllers);
 
+const imagesControllers = require('./images/controllers');
+const imagesRoutes = require('./images/routes')(express.Router(), imagesControllers);
+
 const generalRoutes = require('./generalRoutes.js')(express.Router());
 
 app.use('/api', accountRoutes);
 app.use('/api', itemsRoutes);
+app.use('/api', imagesRoutes);
 app.use('/', generalRoutes);
 
 // Let's go...
