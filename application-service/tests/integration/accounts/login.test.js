@@ -77,7 +77,7 @@ describe('/api/accounts/login', () => {
         it('should return error when given password is not correct', async () => {
             // Given
             let account = { 
-                email: 'test@mail.com',
+                email: 'test1@mail.com',
                 password: 'incorrect password' };
 
             // When
