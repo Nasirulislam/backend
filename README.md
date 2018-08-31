@@ -1,5 +1,6 @@
 # ☁️ GZM Backend
 [![Build Status](https://travis-ci.org/gzm-stack/backend.svg?branch=master)](https://travis-ci.org/gzm-stack/backend)
+[![codecov](https://codecov.io/gh/gzm-stack/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/gzm-stack/backend)
 
 This repo contains the backend stack to support GZM apps.
 
