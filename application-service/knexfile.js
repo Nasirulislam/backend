@@ -10,10 +10,10 @@ module.exports = {
             directory: __dirname + '/db/seeds'
         },
         connection: {
-            host     : 'db',
-            user     : 'gzm',
-            password : 'gzm',
-            database : 'gzm'
+            host     : process.env.GZM_DATABASE_HOST,
+            user     : process.env.GZM_DATABASE_USER,
+            password : process.env.GZM_DATABASE_PASSWORD,
+            database : process.env.GZM_DATABASE_NAME
         }
     },
     test: {
