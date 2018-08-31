@@ -11,5 +11,9 @@
     - [Register](./registerAccount.md)
     - [Login](./login.md)
 
+* Images:
+    - [Upload image](./uploadImage.md)
+    - [Fetch image](./fetchImage.md)
+
 * Errors:
     - [Error codes](./ErrorCodes.md)
