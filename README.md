@@ -1,4 +1,5 @@
 # ☁️ GZM Backend
+[![Twitter: @dcordero](https://img.shields.io/badge/contact-@dcordero-blue.svg?style=flat)](https://twitter.com/dcordero)
 [![Build Status](https://travis-ci.org/gzm-stack/backend.svg?branch=master)](https://travis-ci.org/gzm-stack/backend)
 [![codecov](https://codecov.io/gh/gzm-stack/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/gzm-stack/backend)
 

@@ -1,0 +1,230 @@
+{
+	"variables": [],
+	"info": {
+		"name": "GZM",
+		"_postman_id": "8f2e042e-ddbd-2dc4-1b37-b3d51a6289f0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Items",
+			"description": "",
+			"item": [
+				{
+					"name": "Items",
+					"request": {
+						"url": "{{base}}/api/items",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Item",
+					"request": {
+						"url": "{{base}}/api/items/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Items",
+					"request": {
+						"url": "{{base}}/api/items",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"author\": \"Laura\",\n  \"images\": \"\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Item",
+					"request": {
+						"url": "{{base}}/api/items",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"author\": \"Laura\",\n  \"images\": \"\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Item",
+					"request": {
+						"url": "{{base}}/api/items/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"description": "",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"url": "{{base}}/api/accounts",
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"test3\",\n\t\"email\": \"test3@mail.com\",\n\t\"password\": \"test\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"url": "{{base}}/api/accounts/login",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test1@mail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"description": "",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"url": "{{base}}/api/images",
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"description": "",
+									"type": "file",
+									"src": "Screen Shot 2018-09-25 at 16.49.08.png"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch",
+					"request": {
+						"url": "{{base}}/api/images/1.-1453231167.png",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"author\": \"Laura\",\n  \"images\": \"\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

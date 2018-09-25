@@ -14,7 +14,7 @@ describe('/api/items', () => {
     describe('GET /:id', () => {
         it('should return image with given valid id', async () => {
             // Given
-            const imageId = 'validImageId';
+            const imageId = 'validImageId.png';
 
             // When
             const res = await request(server).get(`/api/images/${imageId}`);
