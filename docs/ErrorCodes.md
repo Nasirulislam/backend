@@ -15,3 +15,4 @@
 | 10   | Invalid email                           |
 | 11   | Invalid password                        |
 | 12   | Invalid image identifier                |
+
