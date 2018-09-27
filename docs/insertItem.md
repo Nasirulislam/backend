@@ -33,10 +33,10 @@ Insert the item with the given parameters
         "created_at": 1526168002442,
         "updated_at": 1526168002442,
         "item_id": "5af779c2ea97590143f29193",
-        "images": {
+        "images": [
             "image0.png",
             "image1.png"
-        }
+        ]
     }
 }
 ```
