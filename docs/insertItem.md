@@ -14,6 +14,7 @@ Insert the item with the given parameters
 
 - title: Title of the new item
 - description: Description of the new item
+- images: Identifier of the images to bind with the new item
 
 **Content-Type**
 
@@ -30,7 +31,12 @@ Insert the item with the given parameters
         "title": "Awesome car",
         "author": "5ae5049fe22c59001bf4a205",
         "created_at": 1526168002442,
-        "item_id": "5af779c2ea97590143f29193"
+        "updated_at": 1526168002442,
+        "item_id": "5af779c2ea97590143f29193",
+        "images": [
+            "image0.png",
+            "image1.png"
+        ]
     }
 }
 ```

@@ -18,7 +18,10 @@ describe('/api/items', () => {
     describe('POST /', () => {
         it('should insert item with the given valid parameters', async () => {
             // Given
-            let item = { title: 'Hello', description: 'This is a dummy text' };
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text', 
+                images: ['image0.png', 'image1.png'] };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
             // When
@@ -29,14 +32,59 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body).toEqual({ 
-                id: 3,
-                author_id: 2,
-                title: 'Hello', 
-                description: 'This is a dummy text'
-            });
+            expect(res.body.id).toEqual(3);
+            expect(res.body.author_id).toEqual(2);
+            expect(res.body.title).toEqual('Hello');
+            expect(res.body.description).toEqual('This is a dummy text');
+            expect(res.body.images).toEqual(['image0.png', 'image1.png']);
+
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);
+        });
+
+        it('should insert item with the given valid parameters and no images', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text'
+            };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/api/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(200);
+            expect(res.body.id).toEqual(4);
+            expect(res.body.author_id).toEqual(2);
+            expect(res.body.title).toEqual('Hello');
+            expect(res.body.description).toEqual('This is a dummy text');
+            expect(res.body.images).toEqual([]);
+
+            const resFetch = await request(server).get('/api/items');
+            expect(resFetch.body.items.length).toEqual(3);
+        });
+
+        it('should return error when invalid image identifiers are given', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text', 
+                images: ['invalidImageId_0', 'invalidImageId_1'] };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/api/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(13);
         });
     
         it('should return error if user is not logged in', async () => {
