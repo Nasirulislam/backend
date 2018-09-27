@@ -44,20 +44,20 @@ const insertItemController = function(req, res) {
         });
 
         const savedItem = await newItem.save();
-        savedItem.refresh();
 
         if (savedItem) {
-            const savedImages = await saveImages(savedItem.get('id'), value.images);
+            await saveImages(savedItem.get('id'), value.images);
 
-            return res.status(200).json({
-                id: savedItem.get('id'),
-                title: savedItem.get('title'),
-                description: savedItem.get('description'),
-                author_id: savedItem.get('author_id'),
-                created_at: savedItem.get('created_at'),
-                updated_at: savedItem.get('updated_at'),
-                images: savedImages
-            });
+            Item.where('id', savedItem.get('id'))
+                .fetch({ withRelated: ['images', 'author'] })
+                .then(function(item) {
+                    if(item) {
+                        return res.status(200).json({ item: item });      
+                    }
+                    else {
+                        return res.status(404).send({ code: 2 });
+                    }
+                });
         }
     });
 };
@@ -73,11 +73,11 @@ const saveImages = async function(itemId, images) {
         const image = images[i];
         const newImage = new Image({
             item_id: itemId,
-            filename: image
+            image: image
         });
 
         const savedImage = await newImage.save();
-        savedImages.push(savedImage.get('filename'));
+        savedImages.push(savedImage.get('image'));
     }
 
     return savedImages;
