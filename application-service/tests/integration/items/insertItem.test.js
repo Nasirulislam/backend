@@ -32,11 +32,11 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.id).toEqual(3);
-            expect(res.body.author_id).toEqual(2);
-            expect(res.body.title).toEqual('Hello');
-            expect(res.body.description).toEqual('This is a dummy text');
-            expect(res.body.images).toEqual(['image0.png', 'image1.png']);
+            expect(res.body.item.id).toEqual(3);
+            expect(res.body.item.author.id).toEqual(2);
+            expect(res.body.item.title).toEqual('Hello');
+            expect(res.body.item.description).toEqual('This is a dummy text');
+            expect(res.body.item.images).toEqual([{ image: 'image0.png'}, { image: 'image1.png'}]);
 
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);
@@ -58,11 +58,11 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.id).toEqual(4);
-            expect(res.body.author_id).toEqual(2);
-            expect(res.body.title).toEqual('Hello');
-            expect(res.body.description).toEqual('This is a dummy text');
-            expect(res.body.images).toEqual([]);
+            expect(res.body.item.id).toEqual(4);
+            expect(res.body.item.author.id).toEqual(2);
+            expect(res.body.item.title).toEqual('Hello');
+            expect(res.body.item.description).toEqual('This is a dummy text');
+            expect(res.body.item.images).toEqual([]);
 
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);

@@ -13,7 +13,7 @@ const fetchSingleItemController = function(req, res) {
         }
 
         Item.where('id', value.identifier)
-            .fetch()
+            .fetch({ withRelated: ['images', 'author'] })
             .then(function(item) {
                 if(item) {
                     res.status(200).json({ item: item });      

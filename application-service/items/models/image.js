@@ -3,7 +3,8 @@
 const bookshelf = require('../../db/bookshelf');
 
 const Image = bookshelf.Model.extend({
-    tableName: 'images'
+    tableName: 'images',
+    hidden: ['id', 'item_id']
 });
 
 module.exports = Image;
