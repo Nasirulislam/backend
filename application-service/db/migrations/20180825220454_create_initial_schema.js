@@ -20,6 +20,11 @@ exports.up = function(knex) {
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.fn.now());
 
+    }).createTable('images', function(table) {
+        table.increments();
+        table.integer('item_id').unsigned().references('id').inTable('items').notNullable();
+        table.string('filename').notNullable();
+        
     });
 };
 
