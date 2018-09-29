@@ -51,9 +51,11 @@ const registerAccountController = function(req, res) {
         newAccount.save()
             .then(function(savedAccount) {
                 return res.status(200).json({
-                    id: savedAccount.get('id'),
-                    email: savedAccount.get('email'),
-                    username: savedAccount.get('username')
+                    account: {
+                        id: savedAccount.get('id'),
+                        email: savedAccount.get('email'),
+                        username: savedAccount.get('username')
+                    }
                 });
             })
             .catch(function() {

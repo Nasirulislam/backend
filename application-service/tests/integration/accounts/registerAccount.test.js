@@ -28,9 +28,11 @@ describe('/api/accounts', () => {
             // Then
             expect(res.status).toBe(200);
             expect(res.body).toEqual({
-                id: 3,
-                username: 'test', 
-                email: 'dummy@test.com',
+                account: {
+                    id: 3,
+                    username: 'test', 
+                    email: 'dummy@test.com'
+                }
             });
             const resFetch = await knex.from('accounts').select();
             expect(resFetch.length).toEqual(3);
