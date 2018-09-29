@@ -26,16 +26,33 @@ Returns all the items matching a given criteria
         {
             "description": "My car is red and it is awesome",
             "title": "Awesome car",
-            "author": "5ae5049fe22c59001bf4a205",
+            "author": {
+                "id": 1,
+                "username": "test1"
+            },
             "created_at": 1526168002442,
-            "item_id": "5af779c2ea97590143f29193"
+            "updated_at": 1526168002442,
+            "item_id": "5af779c2ea97590143f29193",
+            "images": [
+                {
+                    "image": "image1.png"
+                },
+                {
+                    "image": "image2.png"
+                }
+            ]
         },
         {
             "description": "My house is amazing",
             "title": "Amazing house",
-            "author": "5ae5049fe22c59001bf4a210",
+            "author": {
+                "id": 1,
+                "username": "test1"
+            },
             "created_at": 1526168002934,
-            "item_id": "5af779c2ea97590143f299865"
+            "updated_at": 1526168002934,
+            "item_id": "5af779c2ea97590143f299865",
+            "images": []
         }
     ]
 }

@@ -29,7 +29,10 @@ Insert the item with the given parameters
     "item": {
         "description": "My car is red and it is awesome",
         "title": "Awesome car",
-        "author": "5ae5049fe22c59001bf4a205",
+        "author": {
+            "id": 1,
+            "username": "test1"
+        },
         "created_at": 1526168002442,
         "updated_at": 1526168002442,
         "item_id": "5af779c2ea97590143f29193",
