@@ -15,7 +15,7 @@ describe('/api/accounts/login', () => {
     });
 
     describe('POST /', () => {
-        it('should login account with the given valid credentials', async () => {
+        it('should login account with the given valid email and password credentials', async () => {
             // Given
             let account = { 
                 email: 'test1@mail.com', 
@@ -30,6 +30,20 @@ describe('/api/accounts/login', () => {
             expect(res.body).toHaveProperty('token');
         });
 
+        it('should login account with the given valid username and password credentials', async () => {
+            // Given
+            let account = { 
+                username: 'test1', 
+                password: 'test'
+            };
+
+            // When
+            const res = await request(server).post('/api/accounts/login').send(account);
+
+            // Then
+            expect(res.status).toBe(200);
+            expect(res.body).toHaveProperty('token');
+        });
 
         it('should return error when given email is not valid', async () => {
             // Given
@@ -43,6 +57,20 @@ describe('/api/accounts/login', () => {
             // Then
             expect(res.status).toBe(400);
             expect(res.body.code).toBe(10);
+        });
+
+        it('should return error when given username is not valid', async () => {
+            // Given
+            let account = { 
+                username: 12345,
+                password: 'test' };
+
+            // When
+            const res = await request(server).post('/api/accounts/login').send(account);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(9);
         });
 
         it('should return error when given password is not valid', async () => {
@@ -73,6 +101,19 @@ describe('/api/accounts/login', () => {
             expect(res.body.code).toBe(1);
         });
 
+        it('should return error when given username is not registed', async () => {
+            // Given
+            let account = { 
+                username: 'noRegistedUsername',
+                password: 'test' };
+
+            // When
+            const res = await request(server).post('/api/accounts/login').send(account);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(1);
+        });
 
         it('should return error when given password is not correct', async () => {
             // Given
