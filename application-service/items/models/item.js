@@ -16,7 +16,7 @@ const Item = bookshelf.Model.extend({
         return this.hasMany(Image);
     },
 
-    toJSON: function () {
+    toJSON: function() {
         var attrs = bookshelf.Model.prototype.toJSON.apply(this, arguments);
         attrs.created_at = new Date(this.get('created_at')).getTime();
         attrs.updated_at = new Date(this.get('updated_at')).getTime();
