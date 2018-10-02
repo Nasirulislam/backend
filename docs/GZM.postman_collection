@@ -46,13 +46,13 @@
 							},
 							{
 								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"author\": \"Laura\",\n  \"images\": \"\"\n}"
+							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"images\": [\"5.449616010.png\", \"5.65431324.png\"]\n}"
 						},
 						"description": null
 					},
@@ -71,7 +71,7 @@
 							},
 							{
 								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
@@ -96,7 +96,7 @@
 							},
 							{
 								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
@@ -141,10 +141,122 @@
 				},
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token);"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "{{base}}/api/accounts/login",
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test1@mail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{base}}/api/accounts/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test1@mail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{base}}/api/accounts/me",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -180,7 +292,7 @@
 						"header": [
 							{
 								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTUzNzg4NjE0N30.Fso9haItCBq-9RDBnZH3Ar5Xy0xk1X2o5UEJeoe_jeQ",
+								"value": "{{token}}",
 								"description": ""
 							}
 						],
@@ -191,7 +303,7 @@
 									"key": "image",
 									"description": "",
 									"type": "file",
-									"src": "Screen Shot 2018-09-25 at 16.49.08.png"
+									"src": "Screen Shot 2018-10-01 at 22.48.33.png"
 								}
 							]
 						},

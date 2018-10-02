@@ -10,7 +10,7 @@ const insertItemController = function(req, res) {
         title: Joi.string().trim().max(100).min(4).required(),
         description: Joi.string().trim().max(1000).min(10).required(), 
         author_id: Joi.number().required(),
-        images: Joi.array().items(Joi.string().regex(/^([a-zA-Z0-9])*\.png/))
+        images: Joi.array().items(Joi.string().regex(/^(\d*)\.(\d*)\.png/))
     };
  
     const item = {
@@ -30,7 +30,7 @@ const insertItemController = function(req, res) {
                 return res.status(400).send({ code: 6 });
             }
             else if (path === 'images') {
-                return res.status(400).send({ code: 13 });
+                return res.status(400).send({ code: 12 });
             }
             else {
                 return res.status(400).send({ code: error });
