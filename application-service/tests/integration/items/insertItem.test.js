@@ -36,7 +36,9 @@ describe('/api/items', () => {
             expect(res.body.item.author.id).toEqual(2);
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
-            expect(res.body.item.images).toEqual([{ image: '2.1234.png'}, { image: '2.4321.png'}]);
+            expect(res.body.item.images).toEqual([
+                { image: '2.1234.png', path: process.env.IMAGES_BASE_URL }, 
+                { image: '2.4321.png', path: process.env.IMAGES_BASE_URL }]);
 
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);
