@@ -22,7 +22,7 @@ exports.up = function(knex) {
 
     }).createTable('images', function(table) {
         table.increments();
-        table.integer('item_id').unsigned().references('id').inTable('items').notNullable();
+        table.integer('item_id').unsigned().references('id').inTable('items').notNullable().onDelete('CASCADE');
         table.string('image').notNullable();
         
     });
