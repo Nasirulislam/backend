@@ -21,7 +21,7 @@ describe('/api/items', () => {
             let item = { 
                 title: 'Hello', 
                 description: 'This is a dummy text', 
-                images: ['image0.png', 'image1.png'] };
+                images: ['2.1234.png', '2.4321.png'] };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
             // When
@@ -36,7 +36,7 @@ describe('/api/items', () => {
             expect(res.body.item.author.id).toEqual(2);
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
-            expect(res.body.item.images).toEqual([{ image: 'image0.png'}, { image: 'image1.png'}]);
+            expect(res.body.item.images).toEqual([{ image: '2.1234.png'}, { image: '2.4321.png'}]);
 
             const resFetch = await request(server).get('/api/items');
             expect(resFetch.body.items.length).toEqual(3);
@@ -84,7 +84,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(400);
-            expect(res.body.code).toBe(13);
+            expect(res.body.code).toBe(12);
         });
     
         it('should return error if user is not logged in', async () => {
