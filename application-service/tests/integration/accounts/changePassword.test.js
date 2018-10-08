@@ -59,5 +59,21 @@ describe('/api/accounts/password', () => {
             expect(res.status).toBe(400);
             expect(res.body.code).toBe(13);
         });
+
+        it('should return error when given old password is not correct', async () => {
+            // Given
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+            let parameters = {
+                old: 'incorrectPassword',
+                password: 'valid' };
+
+            // When
+            const res = await request(server)
+                .post('/api/accounts/password').send(parameters)
+                .set('x-auth-token', token);
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(1);
+        });
     });
 });
