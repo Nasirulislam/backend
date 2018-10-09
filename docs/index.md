@@ -10,6 +10,9 @@
 * Accounts:
     - [Register](./registerAccount.md)
     - [Login](./login.md)
+    - [Logout](./logout.md)
+    - [Me](./me.md)
+    - [Change password](./changePassword.md)
 
 * Images:
     - [Upload image](./uploadImage.md)
