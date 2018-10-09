@@ -38,8 +38,24 @@ const changePasswordController = function(req, res) {
             return res.status(400).json({ code: 1 });
         }
 
-        // TODO: Edit password
-        res.status(200).json({ 'changePasswordController' : 'Hello' });
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(value.password, salt);
+        accountById.set('salt', salt);
+        accountById.set('password', hashedPassword);
+
+        accountById.save()
+            .then(function(savedAccount) {
+                return res.status(200).json({
+                    account: {
+                        id: savedAccount.get('id'),
+                        email: savedAccount.get('email'),
+                        username: savedAccount.get('username')
+                    }
+                });
+            })
+            .catch(function() {
+                return res.status(500);
+            });
     });
 };
 

@@ -71,9 +71,44 @@ describe('/api/accounts/password', () => {
             const res = await request(server)
                 .post('/api/accounts/password').send(parameters)
                 .set('x-auth-token', token);
+
             // Then
             expect(res.status).toBe(400);
             expect(res.body.code).toBe(1);
+        });
+
+        it('should update the password when given parameters are correct', async () => {
+            // Given
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+            let parameters = {
+                old: 'test',
+                password: 'newPassword' };
+
+            // When
+            const res = await request(server)
+                .post('/api/accounts/password').send(parameters)
+                .set('x-auth-token', token);
+
+            // Then
+            expect(res.status).toBe(200);
+            expect(res.body).toEqual({
+                account: {
+                    id: 2,
+                    username: 'test2',
+                    email: 'test2@mail.com'
+                }
+            });
+
+            // Assert that login works with the new password
+            let account = {
+                username: 'test2',
+                password: 'newPassword'
+            };
+
+            const loginRes = await request(server).post('/api/accounts/login').send(account);
+
+            expect(loginRes.status).toBe(200);
+            expect(loginRes.body).toHaveProperty('token');
         });
     });
 });
