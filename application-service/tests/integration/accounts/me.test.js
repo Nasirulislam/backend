@@ -37,8 +37,6 @@ describe('/api/accounts/me', () => {
         });
 
         it('should return error when not logged in', async () => {
-            // Given
-
             // When
             const res = await request(server)
                 .get('/api/accounts/me');
