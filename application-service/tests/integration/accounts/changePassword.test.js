@@ -26,12 +26,44 @@ describe('/api/accounts/password', () => {
             expect(res.body.code).toBe(3);
         });
 
+        it('should return error when using wrong token', async () => {
+            // Given
+            let token = 'wrong token';
+
+            // When
+            const res = await request(server)
+                .post('/api/accounts/password')
+                .set('x-auth-token', token);
+
+            // Then
+            expect(res.status).toBe(401);
+            expect(res.body.code).toBe(4);
+        });
+
+        it('should return error when given token corresponds to a non existing account', async () => {
+            // Given
+            const nonExistingAccountId = 666;
+            let token = jwt.sign({ id: nonExistingAccountId }, process.env.JWT_SECRET);
+            let parameters = { 
+                old: 'valid',
+                new: 'valid' };
+
+            // When
+            const res = await request(server)
+                .post('/api/accounts/password').send(parameters)
+                .set('x-auth-token', token);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(4);
+        });
+
         it('should return error when given old password is not valid', async () => {
             // Given
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
             let parameters = { 
                 old: 12345,
-                password: 'valid' };
+                new: 'valid' };
 
             // When
             const res = await request(server)
@@ -48,7 +80,7 @@ describe('/api/accounts/password', () => {
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
             let parameters = { 
                 old: 'valid',
-                password: 12345 };
+                new: 12345 };
 
             // When
             const res = await request(server)
@@ -65,7 +97,7 @@ describe('/api/accounts/password', () => {
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
             let parameters = {
                 old: 'incorrectPassword',
-                password: 'valid' };
+                new: 'valid' };
 
             // When
             const res = await request(server)
@@ -82,7 +114,7 @@ describe('/api/accounts/password', () => {
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
             let parameters = {
                 old: 'test',
-                password: 'newPassword' };
+                new: 'newPassword' };
 
             // When
             const res = await request(server)

@@ -6,12 +6,12 @@ const changePasswordController = function(req, res) {
      
     const schema = {
         old: Joi.string().required(),
-        password: Joi.string().required()
+        new: Joi.string().required()
     };
 
     const changePasswordRequest = {
         old: req.body.old,
-        password: req.body.password
+        new: req.body.new
     };
 
     Joi.validate(changePasswordRequest, schema, async function(error, value) {
@@ -20,7 +20,7 @@ const changePasswordController = function(req, res) {
             if (path === 'old') {
                 return res.status(400).send({ code: 11 });
             }
-            else if (path === 'password') {
+            else if (path === 'new') {
                 return res.status(400).send({ code: 13 });
             }
             else {
@@ -39,7 +39,7 @@ const changePasswordController = function(req, res) {
         }
 
         const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(value.password, salt);
+        const hashedPassword = await bcrypt.hash(value.new, salt);
         accountById.set('salt', salt);
         accountById.set('password', hashedPassword);
 
