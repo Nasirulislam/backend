@@ -10,7 +10,8 @@
     "start": "node .",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "go": "sleep 10 && npm run migrate && npm run seed && npm run dev"
   },
   "repository": {
     "type": "git",
