@@ -1,3 +1,5 @@
+'use strict';
+
 const Joi = require('joi');
 const Account = require('../models/account');
 const bcrypt = require('bcrypt');

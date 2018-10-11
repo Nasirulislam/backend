@@ -1,3 +1,5 @@
+'use strict';
+
 const request = require('supertest');
 const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
