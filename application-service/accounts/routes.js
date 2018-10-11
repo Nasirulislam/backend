@@ -8,6 +8,7 @@ module.exports = (router, accountControllers) => {
     router.post('/accounts/logout', auth, accountControllers.logout);
     router.get('/accounts/me', auth, accountControllers.me);
     router.post('/accounts/password', auth, accountControllers.changePassword);
+    router.post('/accounts/forgotpassword', accountControllers.forgotPassword);
 
     return router;
 };

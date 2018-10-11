@@ -1,27 +1,24 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const Joi = require('joi');
+const mailer = require('../../mail/mailer');
 const Account = require('../models/account');
 
-const loginController = function(req, res) {
- 
+const forgotPasswordController = function(req, res) {
+
     const schema = Joi.object()
         .keys({
             username: Joi.string(),
-            email: Joi.string().email(),
-            password: Joi.string().required()
+            email: Joi.string().email()
         })
         .xor('username', 'email');
 
-    const credentials = {
+    const requestForgotPassword = {
         username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
+        email: req.body.email
     };
 
-    Joi.validate(credentials, schema, async function(error, value) {
+    Joi.validate(requestForgotPassword, schema, async function(error, value) {
         if (error) {
             let path = error.details[0].path[0];
             if (path === 'username') {
@@ -29,9 +26,6 @@ const loginController = function(req, res) {
             }
             else if (path === 'email') {
                 return res.status(400).send({ code: 10 });
-            }
-            else if (path === 'password') {
-                return res.status(400).send({ code: 11 });
             }
             else {
                 return res.status(400).send({ code: error });
@@ -50,18 +44,21 @@ const loginController = function(req, res) {
             return res.status(400).json({ code: 1 });
         }
 
-        let validPassword = await bcrypt.compare(value.password, account.get('password'));
-        if (!validPassword) {
-            return res.status(400).json({ code: 1 });
-        }
-
-        const token = jwt.sign({ 
-            id: account.get('id'),
-            username: account.get('username')
-        }, process.env.JWT_SECRET);
-
-        res.status(200).json({ token });
+        mailer.sendMail({
+            to: account.get('email'),
+            subject: 'Forgot password confirmation',
+            text: 'Hello world?',
+            html: '<b>Hello world?</b>'
+            
+        }, function(error) {
+            if (error) {
+                res.status(400).json({ code: 14 });
+            }
+            else {
+                res.status(200).json({ });
+            }
+        });
     });
 };
 
-module.exports = loginController;
+module.exports = forgotPasswordController;

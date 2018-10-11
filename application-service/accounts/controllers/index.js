@@ -5,6 +5,7 @@ module.exports = {
     login: require('./loginController'),
     logout: require('./logoutController'),
     me: require('./meController'),
-    changePassword: require('./changePasswordController')
+    changePassword: require('./changePasswordController'),
+    forgotPassword: require('./forgotPasswordController')
 };
 
