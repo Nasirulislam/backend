@@ -18,6 +18,7 @@ const mailer = {
         let mailOptions = {
             from: process.env.MAIL_FROM || mailOptions.from,
             to: options.to,
+            replyTo: options.replyTo,
             subject: options.subject,
             text: options.text,
             html: options.html
