@@ -16,3 +16,5 @@
 | 11   | Invalid password                        |
 | 12   | Invalid image identifier                |
 | 13   | Invalid new password                    |
+| 14   | Error sending email                     |
+| 15   | Invalid message                         |
