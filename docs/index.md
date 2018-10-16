@@ -13,6 +13,7 @@
     - [Logout](./logout.md)
     - [Me](./me.md)
     - [Change password](./changePassword.md)
+    - [Forgot password](./forgotPassword.md)
 
 * Images:
     - [Upload image](./uploadImage.md)
