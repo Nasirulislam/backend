@@ -55,7 +55,7 @@ const forgotPasswordController = function(req, res) {
             id: account.get('id')
         }, process.env.JWT_MAIL_SECRET);
 
-        const resetPasswordUrl = `http://whatever.com/${token}`;
+        const resetPasswordUrl = process.env.RESET_PASSWORD_URL + token;
 
         mailer.sendMail({
             to: account.get('email'),
