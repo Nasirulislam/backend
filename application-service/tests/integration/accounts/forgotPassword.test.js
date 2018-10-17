@@ -99,7 +99,7 @@ describe('/api/accounts/password', () => {
         expect(sentMail.length).toBe(1);
         expect(sentMail[0].from).toBe(process.env.MAIL_FROM);
         expect(sentMail[0].to).toBe('test1@mail.com');
-        expect(sentMail[0].subject).toBe('GZM: Forgot password confirmation');
+        expect(sentMail[0].subject).toBe('Reset password');
     });
 
     it('Should sent the forgot password mail when a valid username is given', async () => {
@@ -118,7 +118,7 @@ describe('/api/accounts/password', () => {
         expect(sentMail.length).toBe(1);
         expect(sentMail[0].from).toBe(process.env.MAIL_FROM);
         expect(sentMail[0].to).toBe('test2@mail.com');
-        expect(sentMail[0].subject).toBe('GZM: Forgot password confirmation');
+        expect(sentMail[0].subject).toBe('Reset password');
     });
 
     it('Should return the expected error when sending the mail fails', async () => {

@@ -49,11 +49,23 @@ const forgotPasswordController = function(req, res) {
             }
         }
 
+        // TODO
+        const resetPasswordUrl = 'http://whatever.com';
+
         mailer.sendMail({
             to: account.get('email'),
-            subject: 'GZM: Forgot password confirmation',
-            text: 'Hello world?',
-            html: '<b>Hello world?</b>'
+            subject: 'Reset password',
+            text: `
+                Hello,
+                You recently selected the option ‘Forgot password’ of your GZM account.
+
+                If you selected this option, you can reset your password within six hours by clicking on the following link:
+                ${resetPasswordUrl}
+
+                If you did not select this option, please ignore this e-mail.
+
+                Thank you and kind regards,
+                GZM Team`
             
         }, function(error) {
             if (error) {
