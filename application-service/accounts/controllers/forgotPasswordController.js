@@ -41,12 +41,17 @@ const forgotPasswordController = function(req, res) {
         }
 
         if (!account) {
-            return res.status(400).json({ code: 1 });
+            if (value.email) {
+                return res.status(400).json({ code: 10 });
+            }
+            else {
+                return res.status(400).json({ code: 9 });
+            }
         }
 
         mailer.sendMail({
             to: account.get('email'),
-            subject: 'Forgot password confirmation',
+            subject: 'GZM: Forgot password confirmation',
             text: 'Hello world?',
             html: '<b>Hello world?</b>'
             

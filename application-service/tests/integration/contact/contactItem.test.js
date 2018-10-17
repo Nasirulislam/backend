@@ -1,9 +1,16 @@
+const nodemailerMock = require('nodemailer-mock');
 const request = require('supertest');
 const knex = require('../../../db/knex');
 
 let server;
 describe('/api/contact/item/:identifier', () => {
     
+    beforeAll(() => {
+        jest.doMock('nodemailer', () => {
+            return nodemailerMock;
+        });
+    });
+
     beforeEach(async () => {
         await knex.migrate.latest();
         await knex.seed.run();
@@ -11,7 +18,12 @@ describe('/api/contact/item/:identifier', () => {
     });
 
     afterEach(() => {
+        nodemailerMock.mock.reset();
         server.close();
+    });
+
+    afterAll(() => {
+        jest.dontMock('nodemailer');
     });
 
     it('should return error with a given invalid id', async () => {
@@ -107,5 +119,44 @@ describe('/api/contact/item/:identifier', () => {
         // Then
         expect(res.status).toBe(404);
         expect(res.body.code).toBe(2);
+    });
+
+    it('Should sent the mail when called with valid parameters', async () => {
+        // Given
+        const itemId = '1';
+        let contactRequest = { 
+            from: 'test2@mail.com',
+            message: 'Dummy message'
+        };
+
+        // When
+        const res = await request(server).post(`/api/contact/item/${itemId}`).send(contactRequest);
+
+        // Then
+        expect(res.status).toBe(200);
+
+        const sentMail = nodemailerMock.mock.sentMail();
+        expect(sentMail.length).toBe(1);
+        expect(sentMail[0].from).toBe(process.env.MAIL_FROM);
+        expect(sentMail[0].to).toBe('test1@mail.com');
+        expect(sentMail[0].replyTo).toBe('test2@mail.com');
+        expect(sentMail[0].subject).toBe('GZM: A person is interested in your item');
+    });
+
+    it('Should return the expected error when sending the mail fails', async () => {
+        // Given
+        nodemailerMock.mock.shouldFailOnce();
+        const itemId = '1';
+        let contactRequest = { 
+            from: 'test2@mail.com',
+            message: 'Dummy message'
+        };
+
+        // When
+        const res = await request(server).post(`/api/contact/item/${itemId}`).send(contactRequest);
+
+        // Then
+        expect(res.status).toBe(400);
+        expect(res.body.code).toBe(14);
     });
 });
