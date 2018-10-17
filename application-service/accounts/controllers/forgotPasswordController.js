@@ -1,6 +1,7 @@
 'use strict';
 
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const mailer = require('../../mail/mailer');
 const Account = require('../models/account');
 
@@ -49,8 +50,12 @@ const forgotPasswordController = function(req, res) {
             }
         }
 
-        // TODO
-        const resetPasswordUrl = 'http://whatever.com';
+        const token = jwt.sign({
+            expires: Math.floor(Date.now() / 1000) + 6 * 60 * 60,
+            id: account.get('id')
+        }, process.env.JWT_MAIL_SECRET);
+
+        const resetPasswordUrl = `http://whatever.com/${token}`;
 
         mailer.sendMail({
             to: account.get('email'),
