@@ -1,6 +1,7 @@
 'use strict';
 
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const mailer = require('../../mail/mailer');
 const Account = require('../models/account');
 
@@ -49,11 +50,27 @@ const forgotPasswordController = function(req, res) {
             }
         }
 
+        const token = jwt.sign({
+            expires: Math.floor(Date.now() / 1000) + 6 * 60 * 60,
+            id: account.get('id')
+        }, process.env.JWT_MAIL_SECRET);
+
+        const resetPasswordUrl = process.env.RESET_PASSWORD_URL + token;
+
         mailer.sendMail({
             to: account.get('email'),
-            subject: 'GZM: Forgot password confirmation',
-            text: 'Hello world?',
-            html: '<b>Hello world?</b>'
+            subject: 'Reset password',
+            text: `
+                Hello,
+                You recently selected the option ‘Forgot password’ of your GZM account.
+
+                If you selected this option, you can reset your password within six hours by clicking on the following link:
+                ${resetPasswordUrl}
+
+                If you did not select this option, please ignore this e-mail.
+
+                Thank you and kind regards,
+                GZM Team`
             
         }, function(error) {
             if (error) {
