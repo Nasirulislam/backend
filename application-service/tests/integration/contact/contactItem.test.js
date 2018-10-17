@@ -140,7 +140,7 @@ describe('/api/contact/item/:identifier', () => {
         expect(sentMail[0].from).toBe(process.env.MAIL_FROM);
         expect(sentMail[0].to).toBe('test1@mail.com');
         expect(sentMail[0].replyTo).toBe('test2@mail.com');
-        expect(sentMail[0].subject).toBe('GZM: A person is interested in your item');
+        expect(sentMail[0].subject).toBe('A person might interested in your item: Dummy Ad #1');
     });
 
     it('Should return the expected error when sending the mail fails', async () => {

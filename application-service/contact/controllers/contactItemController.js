@@ -48,10 +48,17 @@ const contactItemController = function(req, res) {
 
         mailer.sendMail({
             to: author.get('email'),
-            subject: 'GZM: A person is interested in your item',
+            subject: `A person might interested in your item: ${item.get('title')}`,
             replyTo: value.from,
-            text: value.message,
-            html: `<b>${value.message}</b>`
+            text: `
+                Hello,
+                somebody sent you the following message in relation to your item '${item.get('title')}' posted on GZM.
+                
+                You can reply to this email to get in contact.
+
+                Message:
+
+                ${value.message}`,
 
         }, function(error) {
             if (error) {
