@@ -48,11 +48,11 @@ const contactItemController = function(req, res) {
 
         mailer.sendMail({
             to: author.get('email'),
-            subject: 'A person is interested in your item',
+            subject: 'GZM: A person is interested in your item',
             replyTo: value.from,
             text: value.message,
             html: `<b>${value.message}</b>`
-            
+
         }, function(error) {
             if (error) {
                 res.status(400).json({ code: 14 });

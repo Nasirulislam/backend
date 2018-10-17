@@ -51,7 +51,7 @@ const forgotPasswordController = function(req, res) {
 
         mailer.sendMail({
             to: account.get('email'),
-            subject: 'Forgot password confirmation',
+            subject: 'GZM: Forgot password confirmation',
             text: 'Hello world?',
             html: '<b>Hello world?</b>'
             
