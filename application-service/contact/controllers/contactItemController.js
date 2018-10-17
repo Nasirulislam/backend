@@ -48,7 +48,7 @@ const contactItemController = function(req, res) {
 
         mailer.sendMail({
             to: author.get('email'),
-            subject: `A person might interested in your item: ${item.get('title')}`,
+            subject: `A person might be interested in your item: ${item.get('title')}`,
             replyTo: value.from,
             text: `
                 Hello,
