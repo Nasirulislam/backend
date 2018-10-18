@@ -23,9 +23,9 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.items.length).toEqual(2);
-            expect(res.body.items[0].title).toEqual('Dummy Ad #1');
-            expect(res.body.items[1].title).toEqual('Dummy Ad #2');
+            expect(res.body.items.length).toEqual(10);
+            expect(res.body.items[0].title).toEqual('Dummy Ad #0');
+            expect(res.body.items[1].title).toEqual('Dummy Ad #1');
         });
     });
 });

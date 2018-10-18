@@ -18,3 +18,4 @@
 | 13   | Invalid new password                    |
 | 14   | Error sending email                     |
 | 15   | Invalid message                         |
+| 16   | Invalid page                            |

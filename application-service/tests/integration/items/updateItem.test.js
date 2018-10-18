@@ -22,7 +22,7 @@ describe('/api/items', () => {
             // Given
             const itemId = '1';
             const item = { title: 'Edited item' };
-            let token = jwt.sign({ id: 1 }, process.env.JWT_SECRET);
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
             // When
             const res = await request(server)
@@ -40,7 +40,7 @@ describe('/api/items', () => {
             // Given
             const itemId = '1';
             const item = { title: 'Edited item' };
-            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+            let token = jwt.sign({ id: 1 }, process.env.JWT_SECRET);
 
             // When
             const res = await request(server)

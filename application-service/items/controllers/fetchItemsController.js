@@ -10,7 +10,7 @@ const fetchItemsController = function(req, res) {
     const page = req.query.page || 1;
     Joi.validate({ page }, schema, function(error, value) {
         if(error) {
-            return res.status(404).send({ code: 2 });
+            return res.status(404).send({ code: 16 });
         }
 
         Item.query('orderBy', 'updated_at', 'desc')
@@ -19,7 +19,7 @@ const fetchItemsController = function(req, res) {
                 withRelated: ['images', 'author']
             })
             .then(function(items) {
-                res.status(200).json({
+                res.status(200).json({ 
                     total: items.pagination.rowCount,
                     page: items.pagination.page,
                     items

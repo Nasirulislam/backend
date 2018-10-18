@@ -12,6 +12,8 @@ Returns all the items matching a given criteria
   
 **Parameters**
 
+- page: Paging offset, it takes will take the value 1 by default
+
 **Content-Type**
 
   `application/json`
@@ -22,6 +24,8 @@ Returns all the items matching a given criteria
 
 ```json
 {
+    "total": 100,
+    "page": 1,
     "items": [
         {
             "description": "My car is red and it is awesome",
