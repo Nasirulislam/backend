@@ -10,7 +10,7 @@ const fetchItemsController = function(req, res) {
     const page = req.query.page || 1;
     Joi.validate({ page }, schema, function(error, value) {
         if(error) {
-            return res.status(404).send({ code: 16 });
+            return res.status(400).send({ code: 16 });
         }
 
         Item.query('orderBy', 'updated_at', 'desc')
