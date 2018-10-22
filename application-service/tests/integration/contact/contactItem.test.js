@@ -123,7 +123,7 @@ describe('/api/contact/item/:identifier', () => {
 
     it('Should sent the mail when called with valid parameters', async () => {
         // Given
-        const itemId = '1';
+        const itemId = '2';
         let contactRequest = { 
             from: 'test2@mail.com',
             message: 'Dummy message'
@@ -140,7 +140,7 @@ describe('/api/contact/item/:identifier', () => {
         expect(sentMail[0].from).toBe(process.env.MAIL_FROM);
         expect(sentMail[0].to).toBe('test1@mail.com');
         expect(sentMail[0].replyTo).toBe('test2@mail.com');
-        expect(sentMail[0].subject).toBe('A person might be interested in your item: Dummy Ad #1');
+        expect(sentMail[0].subject).toBe('A person might be interested in your item: Dummy Ad #2');
     });
 
     it('Should return the expected error when sending the mail fails', async () => {

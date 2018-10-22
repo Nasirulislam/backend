@@ -34,7 +34,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.item.id).toEqual(3);
+            expect(res.body.item.id).toEqual(100);
             expect(res.body.item.author.id).toEqual(2);
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
@@ -43,7 +43,7 @@ describe('/api/items', () => {
                 { image: '2.4321.png', path: process.env.IMAGES_BASE_URL }]);
 
             const resFetch = await request(server).get('/api/items');
-            expect(resFetch.body.items.length).toEqual(3);
+            expect(resFetch.body.total).toEqual(101);
         });
 
         it('should insert item with the given valid parameters and no images', async () => {
@@ -62,14 +62,14 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.item.id).toEqual(4);
+            expect(res.body.item.id).toEqual(101);
             expect(res.body.item.author.id).toEqual(2);
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([]);
 
             const resFetch = await request(server).get('/api/items');
-            expect(resFetch.body.items.length).toEqual(3);
+            expect(resFetch.body.total).toEqual(101);
         });
 
         it('should return error when invalid image identifiers are given', async () => {

@@ -17,15 +17,39 @@ describe('/api/items', () => {
     });
 
     describe('GET /', () => {
-        it('should return all items', async () => {
+        it('should return first page, when not receiving a page parameter', async () => {
             // When
             const res = await request(server).get('/api/items');
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.items.length).toEqual(2);
-            expect(res.body.items[0].title).toEqual('Dummy Ad #1');
-            expect(res.body.items[1].title).toEqual('Dummy Ad #2');
+            expect(res.body.items.length).toEqual(10);
+            for (let i=0; i<10; i++) {
+                expect(res.body.items[i].title).toEqual(`Dummy Ad #${i}`);
+            }
+        });
+
+        it('should return appropiate page, when a page parameter is given', async () => {
+            // When
+            const page = 3;
+            const res = await request(server).get(`/api/items?page=${page}`);
+
+            // Then
+            expect(res.status).toBe(200);
+            expect(res.body.items.length).toEqual(10);
+            for (let i=0; i<10; i++) {
+                expect(res.body.items[i].title).toEqual(`Dummy Ad #${i+20}`);
+            }
+        });
+
+        it('should return the expected error, when the given page parameter is invalid', async () => {
+            // When
+            const page = 'invalid page parameter';
+            const res = await request(server).get(`/api/items?page=${page}`);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(16);
         });
     });
 });

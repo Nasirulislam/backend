@@ -21,7 +21,7 @@ describe('/api/items', () => {
         it('should delete item with a given valid id', async () => {
             // Given
             const itemId = '1';
-            let token = jwt.sign({ id: 1 }, process.env.JWT_SECRET);
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
             // When
             const res = await request(server)
@@ -35,7 +35,7 @@ describe('/api/items', () => {
         it('should return error if the item is not owned by the logged in user', async () => {
             // Given
             const itemId = '1';
-            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+            let token = jwt.sign({ id: 1 }, process.env.JWT_SECRET);
 
             // When
             const res = await request(server)
