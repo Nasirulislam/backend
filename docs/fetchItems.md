@@ -64,4 +64,10 @@ Returns all the items matching a given criteria
  
 **Error Response:**
 
-Not documented
+- Invalid page
+
+```json
+{
+    "code": 16
+}
+```
