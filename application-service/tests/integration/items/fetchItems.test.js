@@ -80,8 +80,10 @@ describe('/api/items', () => {
         });
 
         it('should return the expected error, when the given term parameter is invalid', async () => {
-            // When
+            // Given
             let invalidTerm = Array(1002).join('A');
+
+            // When
             const res = await request(server).get(`/api/items?term=${invalidTerm}`);
 
             // Then
