@@ -13,6 +13,7 @@ Returns all the items matching a given criteria
 **Parameters**
 
 - page: Paging offset, it takes will take the value 1 by default
+- author: Identifier of an user to filter items
 
 **Content-Type**
 
@@ -69,5 +70,21 @@ Returns all the items matching a given criteria
 ```json
 {
     "code": 16
+}
+```
+
+- Invalid account identifier
+
+```json
+{
+    "code": 17
+}
+```
+
+- Invalid search term
+
+```json
+{
+    "code": 18
 }
 ```
