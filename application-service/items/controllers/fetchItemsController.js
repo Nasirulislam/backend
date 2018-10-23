@@ -34,8 +34,12 @@ const fetchItemsController = function(req, res) {
             }
         }
 
-        Item.where('title', 'LIKE', `%${value.term}%`)
-            .query('orderBy', 'updated_at', 'desc')
+        Item.query(
+            (qb) => {
+                qb.where('title', 'LIKE', `%${value.term}%`);
+                qb.orWhere('description', 'LIKE', `%${value.term}%`);
+            })
+            .orderBy('-updated_at')
             .fetchPage({
                 page: value.page,
                 withRelated: ['images', 'author']
