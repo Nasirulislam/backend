@@ -80,3 +80,11 @@ Returns all the items matching a given criteria
     "code": 17
 }
 ```
+
+- Invalid search term
+
+```json
+{
+    "code": 18
+}
+```
