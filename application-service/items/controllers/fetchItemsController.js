@@ -7,13 +7,11 @@ const fetchItemsController = function(req, res) {
 
     const schema = {
         page: Joi.number().min(1).default(1),
-        author: Joi.number(),
         term: Joi.string().max(1000).default('')
     };
 
     const fethRequest = {
         page: req.query.page,
-        author: req.query.author,
         term: req.query.term
     };
 
@@ -22,9 +20,6 @@ const fetchItemsController = function(req, res) {
             let path = error.details[0].path[0];
             if (path === 'page') {
                 return res.status(400).send({ code: 16 });
-            }
-            else if (path === 'author') {
-                return res.status(400).send({ code: 17 });
             }
             else if (path === 'term') {
                 return res.status(400).send({ code: 18 });
@@ -42,6 +37,7 @@ const fetchItemsController = function(req, res) {
             .orderBy('-updated_at')
             .fetchPage({
                 page: value.page,
+                pageSize: 50,
                 withRelated: ['images', 'author']
             })
             .then(function(items) {

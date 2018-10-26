@@ -18,4 +18,4 @@ As a result of running this script a couple of Docker containers (application an
 
 ## API Documentation
 
-Further information about the API endpoints can be found [here](./docs/index.md)
+Further information about the API endpoints can be found [here](./docs/api/index.md)
