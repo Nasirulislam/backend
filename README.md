@@ -16,6 +16,8 @@ The stack can be easily launched by using the script `bootstrap.sh` that can be 
 
 As a result of running this script a couple of Docker containers (application and database services respectively) will be created and launched. By default, they will start listening to requests on the port 3000.
 
+Further information about deployment and infrastructure can be found [here](./docs/infrastructure/index.md)
+
 ## API Documentation
 
 Further information about the API endpoints can be found [here](./docs/api/index.md)
