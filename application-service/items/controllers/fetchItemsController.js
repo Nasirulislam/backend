@@ -37,6 +37,7 @@ const fetchItemsController = function(req, res) {
             .orderBy('-updated_at')
             .fetchPage({
                 page: value.page,
+                pageSize: 50,
                 withRelated: ['images', 'author']
             })
             .then(function(items) {

@@ -1,3 +1,5 @@
 # Infrastructure Documentation
 
-- [Droplet initial setup](./droplet.md)
+- [Droplet setup](./droplet.md)
+- [Stack setup](./stack.md)
+- [Setup https](./https.md)

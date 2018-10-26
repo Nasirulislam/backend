@@ -24,24 +24,24 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.items.length).toEqual(10);
-            for (let i=0; i<10; i++) {
+            expect(res.body.items.length).toEqual(50);
+            for (let i=0; i<50; i++) {
                 expect(res.body.items[i].title).toEqual(`Dummy Ad #${i}`);
             }
         });
 
         it('should return appropiate page, when a page parameter is given', async () => {
             // Given
-            const page = 3;
+            const page = 2;
 
             // When
             const res = await request(server).get(`/api/items?page=${page}`);
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.items.length).toEqual(10);
-            for (let i=0; i<10; i++) {
-                expect(res.body.items[i].title).toEqual(`Dummy Ad #${i+20}`);
+            expect(res.body.items.length).toEqual(50);
+            for (let i=0; i<50; i++) {
+                expect(res.body.items[i].title).toEqual(`Dummy Ad #${i+50}`);
             }
         });
 
@@ -76,7 +76,7 @@ describe('/api/items', () => {
 
             // Then
             expect(res.status).toBe(200);
-            expect(res.body.items.length).toEqual(10);
+            expect(res.body.items.length).toEqual(50);
         });
 
         it('should return the expected error, when the given term parameter is invalid', async () => {

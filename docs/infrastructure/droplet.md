@@ -1,4 +1,6 @@
-# Droplet configuration
+# Droplet setup
+
+> The result of this configuration is the snapshot 'GZM-InitialSetup'
 
 - Create new droplet
 - Assign floating ip
@@ -85,4 +87,32 @@ OpenSSH                    ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 80 (v6)                    ALLOW       Anywhere (v6)
 443 (v6)                   ALLOW       Anywhere (v6)
+```
+
+- Install git
+
+```
+$ sudo apt-get install git
+```
+
+- Install Docker
+
+```
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+$ sudo apt-get update
+$ apt-cache policy docker-ce
+$ sudo apt-get install -y docker-ce docker-compose
+```
+
+- Add user to the docker group
+
+```
+sudo usermod -aG docker [username]
+```
+
+- Start docker
+
+```
+sudo systemctl start docker
 ```
