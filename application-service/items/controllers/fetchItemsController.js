@@ -7,7 +7,7 @@ const fetchItemsController = function(req, res) {
 
     const schema = {
         page: Joi.number().min(1).default(1),
-        term: Joi.string().max(1000).default('')
+        term: Joi.string().allow('').max(1000).default('').trim()
     };
 
     const fethRequest = {
