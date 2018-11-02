@@ -6,133 +6,107 @@ exports.seed = function(knex) {
             return knex('locations').insert([
                 {
                     id: 1,
-                    name: 'aargau',
-                    image: 'XXXXXX'
+                    name: 'aargau'
                 },
                 {
                     id: 2,
-                    name: 'appenzellAusserrhoden',
-                    image: 'XXXXXX'
+                    name: 'appenzellAusserrhoden'
                 },
                 {
                     id: 3,
-                    name: 'appenzellInnerrhoden',
-                    image: 'XXXXXX'
+                    name: 'appenzellInnerrhoden'
                 },
                 {
                     id: 4,
-                    name: 'baselLandSchaft',
-                    image: 'XXXXXX'
+                    name: 'baselLandSchaft'
                 },
                 {
                     id: 5,
-                    name: 'baselStadt',
-                    image: 'XXXXXX'
+                    name: 'baselStadt'
                 },
                 {
                     id: 6,
-                    name: 'bern',
-                    image: 'XXXXXX'
+                    name: 'bern'
                 },
                 {
                     id: 7,
-                    name: 'fribourg',
-                    image: 'XXXXXX'
+                    name: 'fribourg'
                 },
                 {
                     id: 8,
-                    name: 'geneva',
-                    image: 'XXXXXX'
+                    name: 'geneva'
                 },
                 {
                     id: 9,
-                    name: 'glarus',
-                    image: 'XXXXXX'
+                    name: 'glarus'
                 },
                 {
                     id: 10,
-                    name: 'grisons',
-                    image: 'XXXXXX'
+                    name: 'grisons'
                 },
                 {
                     id: 11,
-                    name: 'jura',
-                    image: 'XXXXXX'
+                    name: 'jura'
                 },
                 {
                     id: 12,
-                    name: 'luzern',
-                    image: 'XXXXXX'
+                    name: 'luzern'
                 },
                 {
                     id: 13,
-                    name: 'neuchatel',
-                    image: 'XXXXXX'
+                    name: 'neuchatel'
                 },
                 {
                     id: 14,
-                    name: 'nidwalden',
-                    image: 'XXXXXX'
+                    name: 'nidwalden'
                 },
                 {
                     id: 15,
-                    name: 'obwalden',
-                    image: 'XXXXXX'
+                    name: 'obwalden'
                 },
                 {
                     id: 16,
-                    name: 'schaffhausen',
-                    image: 'XXXXXX'
+                    name: 'schaffhausen'
                 },
                 {
                     id: 17,
-                    name: 'schwyz',
-                    image: 'XXXXXX'
+                    name: 'schwyz'
                 },
                 {
                     id: 18,
-                    name: 'solothurn',
-                    image: 'XXXXXX'
+                    name: 'solothurn'
                 },
                 {
                     id: 19,
-                    name: 'stgallen',
-                    image: 'XXXXXX'
+                    name: 'stgallen'
                 },
                 {
                     id: 20,
-                    name: 'ticino',
-                    image: 'XXXXXX'
+                    name: 'ticino'
                 },
                 {
                     id: 21,
-                    name: 'thurgau',
-                    image: 'XXXXXX'
+                    name: 'thurgau'
                 },
                 {
                     id: 22,
-                    name: 'uri',
-                    image: 'XXXXXX'
+                    name: 'uri'
                 },
                 {
                     id: 23,
-                    name: 'valais',
-                    image: 'XXXXXX'
+                    name: 'valais'
                 },
                 {
                     id: 24,
-                    name: 'vaud',
-                    image: 'XXXXXX'
+                    name: 'vaud'
                 },
                 {
                     id: 25,
-                    name: 'zuerich',
-                    image: 'XXXXXX'
+                    name: 'zuerich'
                 },
                 {
                     id: 26,
-                    name: 'zug',
-                    image: 'XXXXXX'
+                    name: 'zug'
                 }
             ]);
         });
