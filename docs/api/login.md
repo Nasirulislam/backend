@@ -4,7 +4,7 @@ Login with the given credentials
 
 **URL**
 
-  /api/accounts/login
+  /v1/accounts/login
 
 **Method:**
   

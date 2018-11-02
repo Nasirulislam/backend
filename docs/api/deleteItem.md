@@ -4,7 +4,7 @@ Deletes the item with the given id
 
 **URL**
 
-  /api/items/[item_id]
+  /v1/items/[item_id]
 
 **Method:**
   

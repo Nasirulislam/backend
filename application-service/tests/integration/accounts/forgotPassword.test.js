@@ -2,7 +2,7 @@ const nodemailerMock = require('nodemailer-mock');
 const request = require('supertest');
 const knex = require('../../../db/knex');
 
-describe('/api/accounts/password', () => {
+describe('/v1/accounts/password', () => {
 
     let server = null;
 
@@ -34,7 +34,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(400);
@@ -48,7 +48,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(400);
@@ -62,7 +62,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(400);
@@ -76,7 +76,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(400);
@@ -90,7 +90,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(200);
@@ -109,7 +109,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(200);
@@ -129,7 +129,7 @@ describe('/api/accounts/password', () => {
         };
 
         // When
-        const res = await request(server).post('/api/accounts/forgotpassword').send(forgotPasswordRequest);
+        const res = await request(server).post('/v1/accounts/forgotpassword').send(forgotPasswordRequest);
 
         // Then
         expect(res.status).toBe(400);

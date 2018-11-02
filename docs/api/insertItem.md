@@ -4,7 +4,7 @@ Insert the item with the given parameters
 
 **URL**
 
-  /api/items
+  /v1/items
 
 **Method:**
   

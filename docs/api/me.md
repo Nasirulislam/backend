@@ -4,7 +4,7 @@ Returns account information to a logged in user
 
 **URL**
 
-  /api/accounts/me
+  /v1/accounts/me
 
 **Method:**
   

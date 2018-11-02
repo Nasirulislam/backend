@@ -15,6 +15,9 @@
     - [Change password](./changePassword.md)
     - [Forgot password](./forgotPassword.md)
 
+* Locations:
+    - [Fetch locations](./fetchLocations.md)
+    
 * Images:
     - [Upload image](./uploadImage.md)
     - [Fetch image](./fetchImage.md)

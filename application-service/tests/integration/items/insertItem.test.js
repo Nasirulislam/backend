@@ -5,7 +5,7 @@ const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -28,7 +28,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -39,10 +39,10 @@ describe('/api/items', () => {
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([
-                { image: '2.1234.png', path: process.env.IMAGES_BASE_URL }, 
-                { image: '2.4321.png', path: process.env.IMAGES_BASE_URL }]);
+                { image: '2.1234.png', path: process.env.IMAGES_BASE_URL + 'items' }, 
+                { image: '2.4321.png', path: process.env.IMAGES_BASE_URL + 'items' }]);
 
-            const resFetch = await request(server).get('/api/items');
+            const resFetch = await request(server).get('/v1/items');
             expect(resFetch.body.total).toEqual(101);
         });
 
@@ -56,7 +56,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -68,7 +68,7 @@ describe('/api/items', () => {
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([]);
 
-            const resFetch = await request(server).get('/api/items');
+            const resFetch = await request(server).get('/v1/items');
             expect(resFetch.body.total).toEqual(101);
         });
 
@@ -82,7 +82,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -96,7 +96,7 @@ describe('/api/items', () => {
             let item = { title: 'Hello', description: 'This is a dummy text' };
 
             // When
-            const res = await request(server).post('/api/items').send(item);
+            const res = await request(server).post('/v1/items').send(item);
 
             // Then
             expect(res.status).toBe(401);
@@ -110,7 +110,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', invalidToken)
                 .send(item);
 
@@ -126,7 +126,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -142,7 +142,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -158,7 +158,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -175,7 +175,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -191,7 +191,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -208,7 +208,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .post('/api/items')
+                .post('/v1/items')
                 .set('x-auth-token', token)
                 .send(item);
 

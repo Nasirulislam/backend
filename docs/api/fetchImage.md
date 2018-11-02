@@ -2,7 +2,7 @@
 
 **URL**
 
-  /api/images/[image_id]
+  /v1/images/[image_id]
 
 **Method:**
   

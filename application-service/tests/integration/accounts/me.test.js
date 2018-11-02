@@ -5,7 +5,7 @@ const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
 
 let server;
-describe('/api/accounts/me', () => {
+describe('/v1/accounts/me', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -24,7 +24,7 @@ describe('/api/accounts/me', () => {
 
             // When
             const res = await request(server)
-                .get('/api/accounts/me')
+                .get('/v1/accounts/me')
                 .set('x-auth-token', token);
 
             // Then
@@ -41,7 +41,7 @@ describe('/api/accounts/me', () => {
         it('should return error when not logged in', async () => {
             // When
             const res = await request(server)
-                .get('/api/accounts/me');
+                .get('/v1/accounts/me');
 
             // Then
             expect(res.status).toBe(401);
@@ -54,7 +54,7 @@ describe('/api/accounts/me', () => {
 
             // When
             const res = await request(server)
-                .get('/api/accounts/me')
+                .get('/v1/accounts/me')
                 .set('x-auth-token', invalidToken);
 
             // Then

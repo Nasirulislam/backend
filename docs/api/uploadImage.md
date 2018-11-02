@@ -4,7 +4,7 @@ Upload an image to be used for item insertion
 
 **URL**
 
-  /api/images
+  /v1/images
 
 **Method:**
   

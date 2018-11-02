@@ -4,7 +4,7 @@ Log out a currently logged in user
 
 **URL**
 
-  /api/accounts/logout
+  /v1/accounts/logout
 
 **Method:**
   

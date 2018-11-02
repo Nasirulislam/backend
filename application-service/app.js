@@ -22,15 +22,20 @@ const itemsRoutes = require('./items/routes')(express.Router(), itemsControllers
 const contactControllers = require('./contact/controllers');
 const contactRoutes = require('./contact/routes')(express.Router(), contactControllers);
 
+const locationsControllers = require('./locations/controllers');
+const locationsRoutes = require('./locations/routes')(express.Router(), locationsControllers);
+
 const imagesControllers = require('./images/controllers');
 const imagesRoutes = require('./images/routes')(express.Router(), imagesControllers);
 
 const generalRoutes = require('./generalRoutes.js')(express.Router());
 
-app.use('/api', accountRoutes);
-app.use('/api', itemsRoutes);
-app.use('/api', contactRoutes);
-app.use('/api', imagesRoutes);
+const apiVersion = '/v1';
+app.use(apiVersion, accountRoutes);
+app.use(apiVersion, itemsRoutes);
+app.use(apiVersion, contactRoutes);
+app.use(apiVersion, locationsRoutes);
+app.use(apiVersion, imagesRoutes);
 app.use('/', generalRoutes);
 
 // Let's go...

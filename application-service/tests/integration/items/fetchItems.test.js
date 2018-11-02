@@ -4,7 +4,7 @@ const request = require('supertest');
 const knex = require('../../../db/knex');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -20,7 +20,7 @@ describe('/api/items', () => {
 
         it('should return first page, when not receiving a page parameter', async () => {
             // When
-            const res = await request(server).get('/api/items');
+            const res = await request(server).get('/v1/items');
 
             // Then
             expect(res.status).toBe(200);
@@ -35,7 +35,7 @@ describe('/api/items', () => {
             const page = 2;
 
             // When
-            const res = await request(server).get(`/api/items?page=${page}`);
+            const res = await request(server).get(`/v1/items?page=${page}`);
 
             // Then
             expect(res.status).toBe(200);
@@ -48,7 +48,7 @@ describe('/api/items', () => {
         it('should return the expected error, when the given page parameter is invalid', async () => {
             // When
             const page = 'invalid page parameter';
-            const res = await request(server).get(`/api/items?page=${page}`);
+            const res = await request(server).get(`/v1/items?page=${page}`);
 
             // Then
             expect(res.status).toBe(400);
@@ -60,7 +60,7 @@ describe('/api/items', () => {
             const termWithoutResults = 'Hi there, there are no ads with this text :(';
 
             // When
-            const res = await request(server).get(`/api/items?term=${termWithoutResults}`);
+            const res = await request(server).get(`/v1/items?term=${termWithoutResults}`);
 
             // Then
             expect(res.status).toBe(200);
@@ -72,7 +72,7 @@ describe('/api/items', () => {
             const termWithResults = 'Description of the dummy ad';
 
             // When
-            const res = await request(server).get(`/api/items?term=${termWithResults}`);
+            const res = await request(server).get(`/v1/items?term=${termWithResults}`);
 
             // Then
             expect(res.status).toBe(200);
@@ -84,7 +84,7 @@ describe('/api/items', () => {
             let invalidTerm = Array(1002).join('A');
 
             // When
-            const res = await request(server).get(`/api/items?term=${invalidTerm}`);
+            const res = await request(server).get(`/v1/items?term=${invalidTerm}`);
 
             // Then
             expect(res.status).toBe(400);

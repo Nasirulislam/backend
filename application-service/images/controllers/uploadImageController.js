@@ -27,7 +27,7 @@ const uploadImageController = function(req, res) {
             acl: 'public-read',
             key: function (request, file, cb) {
                 fileName = req.user.id + '.' + hashCode(file.originalname) + '.png';
-                cb(null, fileName);
+                cb(null, `items/${fileName}`);
             }
         })
     }).single('image');

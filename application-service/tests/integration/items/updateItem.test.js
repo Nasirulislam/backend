@@ -5,7 +5,7 @@ const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -26,13 +26,13 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .put(`/api/items/${itemId}`)
+                .put(`/v1/items/${itemId}`)
                 .set('x-auth-token', token)
                 .send(item);
 
             // Then
             expect(res.status).toBe(200);
-            const resFetch = await request(server).get(`/api/items/${itemId}`);
+            const resFetch = await request(server).get(`/v1/items/${itemId}`);
             expect(resFetch.body.item.title).toEqual('Edited item');
         });
 
@@ -44,7 +44,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .put(`/api/items/${itemId}`)
+                .put(`/v1/items/${itemId}`)
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -61,7 +61,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .put(`/api/items/${invalidItemId}`)
+                .put(`/v1/items/${invalidItemId}`)
                 .set('x-auth-token', token)
                 .send(item);
 
@@ -77,7 +77,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .put(`/api/items/${itemId}`)
+                .put(`/v1/items/${itemId}`)
                 .send(item);
 
             // Then
@@ -93,7 +93,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .put(`/api/items/${itemId}`)
+                .put(`/v1/items/${itemId}`)
                 .set('x-auth-token', invalidToken)
                 .send(item);
 

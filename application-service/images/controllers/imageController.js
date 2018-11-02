@@ -11,7 +11,7 @@ const imageController = function(req, res) {
             return res.status(404).send({ code: 12 });
         }
 
-        res.redirect(process.env.IMAGES_BASE_URL + value.identifier);
+        res.redirect(`${process.env.IMAGES_BASE_URL}items/${value.identifier}`);
     });
 };
 
