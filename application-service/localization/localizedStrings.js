@@ -16,6 +16,6 @@ const localizedString = function (req, string) {
     }
     
     return string.en;
-}
+};
 
 module.exports = localizedString;

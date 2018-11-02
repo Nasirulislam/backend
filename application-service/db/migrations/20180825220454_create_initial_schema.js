@@ -28,7 +28,7 @@ exports.up = function(knex) {
         
     }).createTable('locations', function(table) {
         table.increments();
-        table.string('name').notNullable()
+        table.string('name').notNullable();
     });
 };
 

@@ -269,6 +269,6 @@ const strings = {
             fr: ''
         }
     }
-}
+};
 
 module.exports = strings;
