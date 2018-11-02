@@ -4,12 +4,16 @@ Returns the item with the given id
 
 **URL**
 
-  /api/items/[item_id]
+  /v1/items/[item_id]
 
 **Method:**
   
   `GET`
   
+**Headers**
+
+- Accept-Language
+
 **Parameters**
 
 - item_id: The id of the item

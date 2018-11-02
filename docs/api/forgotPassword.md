@@ -2,7 +2,7 @@ Send a request to reset a forgotten password
 
 **URL**
 
-  /api/accounts/forgotpassword
+  /v1/accounts/forgotpassword
 
 **Method:**
   

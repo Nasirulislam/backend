@@ -4,7 +4,7 @@ Returns all the items matching a given criteria
 
 **URL**
 
-  /api/items
+  /v1/items
 
 **Method:**
   

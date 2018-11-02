@@ -5,7 +5,7 @@ const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
 
 let server;
-describe('/api/accounts/password', () => {
+describe('/v1/accounts/password', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -21,7 +21,7 @@ describe('/api/accounts/password', () => {
         it('should return error when not logged in', async () => {
             // When
             const res = await request(server)
-                .post('/api/accounts/password');
+                .post('/v1/accounts/password');
 
             // Then
             expect(res.status).toBe(401);
@@ -34,7 +34,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password')
+                .post('/v1/accounts/password')
                 .set('x-auth-token', token);
 
             // Then
@@ -52,7 +52,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password').send(parameters)
+                .post('/v1/accounts/password').send(parameters)
                 .set('x-auth-token', token);
 
             // Then
@@ -69,7 +69,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password').send(parameters)
+                .post('/v1/accounts/password').send(parameters)
                 .set('x-auth-token', token);
 
             // Then
@@ -86,7 +86,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password').send(parameters)
+                .post('/v1/accounts/password').send(parameters)
                 .set('x-auth-token', token);
 
             // Then
@@ -103,7 +103,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password').send(parameters)
+                .post('/v1/accounts/password').send(parameters)
                 .set('x-auth-token', token);
 
             // Then
@@ -120,7 +120,7 @@ describe('/api/accounts/password', () => {
 
             // When
             const res = await request(server)
-                .post('/api/accounts/password').send(parameters)
+                .post('/v1/accounts/password').send(parameters)
                 .set('x-auth-token', token);
 
             // Then
@@ -139,7 +139,7 @@ describe('/api/accounts/password', () => {
                 password: 'newPassword'
             };
 
-            const loginRes = await request(server).post('/api/accounts/login').send(account);
+            const loginRes = await request(server).post('/v1/accounts/login').send(account);
 
             expect(loginRes.status).toBe(200);
             expect(loginRes.body).toHaveProperty('token');

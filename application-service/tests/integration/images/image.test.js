@@ -3,7 +3,7 @@
 const request = require('supertest');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         server = require('../../../app');
@@ -19,11 +19,11 @@ describe('/api/items', () => {
             const imageId = 'validImageId.png';
 
             // When
-            const res = await request(server).get(`/api/images/${imageId}`);
+            const res = await request(server).get(`/v1/images/${imageId}`);
 
             // Then
             expect(res.status).toBe(302);
-            expect(res.header['location']).toBe(process.env.IMAGES_BASE_URL + imageId);
+            expect(res.header['location']).toBe(process.env.IMAGES_BASE_URL + 'items/' + imageId);
         });
 
         it('should return error with a given invalid id', async () => {
@@ -31,7 +31,7 @@ describe('/api/items', () => {
             const invalidImageId = 'invalid image id';
 
             // When
-            const res = await request(server).get(`/api/images/${invalidImageId}`);
+            const res = await request(server).get(`/v1/images/${invalidImageId}`);
 
             // Then
             expect(res.status).toBe(404);

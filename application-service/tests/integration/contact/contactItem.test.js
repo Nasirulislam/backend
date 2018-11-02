@@ -3,7 +3,7 @@ const request = require('supertest');
 const knex = require('../../../db/knex');
 
 let server;
-describe('/api/contact/item/:identifier', () => {
+describe('/v1/contact/item/:identifier', () => {
     
     beforeAll(() => {
         jest.doMock('nodemailer', () => {
@@ -31,7 +31,7 @@ describe('/api/contact/item/:identifier', () => {
         const invalidItemId = 'Hi there I am not valid :(';
 
         // When
-        const res = await request(server).post(`/api/contact/item/${invalidItemId}`);
+        const res = await request(server).post(`/v1/contact/item/${invalidItemId}`);
 
         // Then
         expect(res.status).toBe(400);
@@ -46,7 +46,7 @@ describe('/api/contact/item/:identifier', () => {
 
         // When
         const res = await request(server)
-            .post('/api/contact/item/1')
+            .post('/v1/contact/item/1')
             .send(contactRequest);
 
         // Then
@@ -62,7 +62,7 @@ describe('/api/contact/item/:identifier', () => {
 
         // When
         const res = await request(server)
-            .post('/api/contact/item/1')
+            .post('/v1/contact/item/1')
             .send(contactRequest);
 
         // Then
@@ -79,7 +79,7 @@ describe('/api/contact/item/:identifier', () => {
 
         // When
         const res = await request(server)
-            .post('/api/contact/item/1')
+            .post('/v1/contact/item/1')
             .send(contactRequest);
 
         // Then
@@ -95,7 +95,7 @@ describe('/api/contact/item/:identifier', () => {
 
         // When
         const res = await request(server)
-            .post('/api/contact/item/1')
+            .post('/v1/contact/item/1')
             .send(contactRequest);
 
         // Then
@@ -114,7 +114,7 @@ describe('/api/contact/item/:identifier', () => {
 
         // When
         const res = await request(server)
-            .post(`/api/contact/item/${notExistingItemId}`)
+            .post(`/v1/contact/item/${notExistingItemId}`)
             .send(contactRequest);
         // Then
         expect(res.status).toBe(404);
@@ -130,7 +130,7 @@ describe('/api/contact/item/:identifier', () => {
         };
 
         // When
-        const res = await request(server).post(`/api/contact/item/${itemId}`).send(contactRequest);
+        const res = await request(server).post(`/v1/contact/item/${itemId}`).send(contactRequest);
 
         // Then
         expect(res.status).toBe(200);
@@ -153,7 +153,7 @@ describe('/api/contact/item/:identifier', () => {
         };
 
         // When
-        const res = await request(server).post(`/api/contact/item/${itemId}`).send(contactRequest);
+        const res = await request(server).post(`/v1/contact/item/${itemId}`).send(contactRequest);
 
         // Then
         expect(res.status).toBe(400);

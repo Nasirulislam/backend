@@ -4,7 +4,7 @@ Change the password of a logged in user
 
 **URL**
 
-  /api/accounts/password
+  /v1/accounts/password
 
 **Method:**
   

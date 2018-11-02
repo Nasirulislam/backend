@@ -4,7 +4,7 @@ Update an item with the given parameters
 
 **URL**
 
-  /api/items/[item_id]
+  /v1/items/[item_id]
 
 **Method:**
   

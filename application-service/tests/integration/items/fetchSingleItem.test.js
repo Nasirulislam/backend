@@ -4,7 +4,7 @@ const request = require('supertest');
 const knex = require('../../../db/knex');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -22,7 +22,7 @@ describe('/api/items', () => {
             const itemId = '1';
 
             // When
-            const res = await request(server).get(`/api/items/${itemId}`);
+            const res = await request(server).get(`/v1/items/${itemId}`);
 
             // Then
             expect(res.status).toBe(200);
@@ -34,7 +34,7 @@ describe('/api/items', () => {
             const notExistingItemId = '99999';
 
             // When
-            const res = await request(server).get(`/api/items/${notExistingItemId}`);
+            const res = await request(server).get(`/v1/items/${notExistingItemId}`);
 
             // Then
             expect(res.status).toBe(404);
@@ -46,7 +46,7 @@ describe('/api/items', () => {
             const invalidItemId = 'Hi there I am not valid :(';
 
             // When
-            const res = await request(server).get(`/api/items/${invalidItemId}`);
+            const res = await request(server).get(`/v1/items/${invalidItemId}`);
 
             // Then
             expect(res.status).toBe(404);

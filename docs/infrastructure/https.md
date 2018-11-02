@@ -42,7 +42,7 @@ server {
 }
 ```
 
-- Verify configuration and reload
+- Verify configuration and reload nginx
 
 ```
 $ sudo nginx -t

@@ -4,7 +4,7 @@ Create a new account with the given parameters
 
 **URL**
 
-  /api/accounts
+  /v1/accounts
 
 **Method:**
   

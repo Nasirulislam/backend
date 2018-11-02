@@ -5,7 +5,7 @@ const knex = require('../../../db/knex');
 const jwt = require('jsonwebtoken');
 
 let server;
-describe('/api/items', () => {
+describe('/v1/items', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -25,7 +25,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${itemId}`)
+                .delete(`/v1/items/${itemId}`)
                 .set('x-auth-token', token);
 
             // Then
@@ -39,7 +39,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${itemId}`)
+                .delete(`/v1/items/${itemId}`)
                 .set('x-auth-token', token);
 
             // Then
@@ -54,7 +54,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${notExistingItemId}`)
+                .delete(`/v1/items/${notExistingItemId}`)
                 .set('x-auth-token', token);
 
             // Then
@@ -69,7 +69,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${invalidItemId}`)
+                .delete(`/v1/items/${invalidItemId}`)
                 .set('x-auth-token', token);
 
             // Then
@@ -83,7 +83,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${itemId}`);
+                .delete(`/v1/items/${itemId}`);
 
             // Then
             expect(res.status).toBe(401);
@@ -96,7 +96,7 @@ describe('/api/items', () => {
 
             // When
             const res = await request(server)
-                .delete(`/api/items/${itemId}`)
+                .delete(`/v1/items/${itemId}`)
                 .set('x-auth-token', invalidToken);
 
             // Then

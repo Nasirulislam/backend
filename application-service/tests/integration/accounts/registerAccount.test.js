@@ -4,7 +4,7 @@ const request = require('supertest');
 const knex = require('../../../db/knex');
 
 let server;
-describe('/api/accounts', () => {
+describe('/v1/accounts', () => {
     
     beforeEach(async () => {
         await knex.migrate.latest();
@@ -25,7 +25,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(200);
@@ -48,7 +48,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -63,7 +63,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -78,7 +78,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -93,7 +93,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -108,7 +108,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -123,7 +123,7 @@ describe('/api/accounts', () => {
                 password: '123' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -137,7 +137,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -151,7 +151,7 @@ describe('/api/accounts', () => {
                 password: '12345' };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);
@@ -166,7 +166,7 @@ describe('/api/accounts', () => {
             };
 
             // When
-            const res = await request(server).post('/api/accounts').send(account);
+            const res = await request(server).post('/v1/accounts').send(account);
 
             // Then
             expect(res.status).toBe(400);

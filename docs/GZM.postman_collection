@@ -14,7 +14,7 @@
 				{
 					"name": "Items",
 					"request": {
-						"url": "{{base}}/api/items",
+						"url": "{{base}}/v1/items",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -25,7 +25,7 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/api/items/2",
+						"url": "{{base}}/v1/items/2",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -36,7 +36,7 @@
 				{
 					"name": "Items",
 					"request": {
-						"url": "{{base}}/api/items",
+						"url": "{{base}}/v1/items",
 						"method": "POST",
 						"header": [
 							{
@@ -61,7 +61,7 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/api/items",
+						"url": "{{base}}/v1/items",
 						"method": "PUT",
 						"header": [
 							{
@@ -86,7 +86,7 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/api/items/2",
+						"url": "{{base}}/v1/items/2",
 						"method": "DELETE",
 						"header": [
 							{
@@ -117,7 +117,7 @@
 				{
 					"name": "Register",
 					"request": {
-						"url": "{{base}}/api/accounts",
+						"url": "{{base}}/v1/accounts",
 						"method": "POST",
 						"header": [
 							{
@@ -154,7 +154,7 @@
 						}
 					],
 					"request": {
-						"url": "{{base}}/api/accounts/login",
+						"url": "{{base}}/v1/accounts/login",
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -193,7 +193,7 @@
 						}
 					],
 					"request": {
-						"url": "{{base}}/api/accounts/logout",
+						"url": "{{base}}/v1/accounts/logout",
 						"method": "POST",
 						"header": [
 							{
@@ -243,7 +243,7 @@
 						}
 					],
 					"request": {
-						"url": "{{base}}/api/accounts/me",
+						"url": "{{base}}/v1/accounts/me",
 						"method": "GET",
 						"header": [
 							{
@@ -287,7 +287,7 @@
 				{
 					"name": "Upload",
 					"request": {
-						"url": "{{base}}/api/images",
+						"url": "{{base}}/v1/images",
 						"method": "POST",
 						"header": [
 							{
@@ -314,7 +314,7 @@
 				{
 					"name": "Fetch",
 					"request": {
-						"url": "{{base}}/api/images/1.-1453231167.png",
+						"url": "{{base}}/v1/images/1.-1453231167.png",
 						"method": "GET",
 						"header": [
 							{
