@@ -7,12 +7,14 @@ const fetchItemsController = function(req, res) {
 
     const schema = {
         page: Joi.number().min(1).default(1),
-        term: Joi.string().allow('').max(1000).default('').trim()
+        term: Joi.string().allow('').max(1000).default('').trim(),
+        location_id: Joi.number().min(1).max(26)
     };
 
     const fethRequest = {
         page: req.query.page,
-        term: req.query.term
+        term: req.query.term,
+        location_id: req.query.location_id
     };
 
     Joi.validate(fethRequest, schema, function(error, value) {
@@ -24,6 +26,9 @@ const fetchItemsController = function(req, res) {
             else if (path === 'term') {
                 return res.status(400).send({ code: 18 });
             }
+            else if (path === 'location_id') {
+                return res.status(400).send({ code: 19 });
+            }
             else {
                 return res.status(400).send({ code: error });
             }
@@ -31,8 +36,14 @@ const fetchItemsController = function(req, res) {
 
         Item.query(
             (qb) => {
-                qb.where('title', 'LIKE', `%${value.term}%`);
-                qb.orWhere('description', 'LIKE', `%${value.term}%`);
+                qb.where(function() {
+                    this.where('title', 'LIKE', `%${value.term}%`)
+                        .orWhere('description', 'LIKE', `%${value.term}%`);
+                });
+
+                if (value.location_id) {
+                    qb.andWhere('location_id', '=', value.location_id);
+                }
             })
             .orderBy('-updated_at')
             .fetchPage({
