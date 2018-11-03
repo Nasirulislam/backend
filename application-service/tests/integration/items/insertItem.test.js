@@ -22,7 +22,8 @@ describe('/v1/items', () => {
             // Given
             let item = { 
                 title: 'Hello', 
-                description: 'This is a dummy text', 
+                description: 'This is a dummy text',
+                location_id: 4, 
                 images: ['2.1234.png', '2.4321.png'] };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
@@ -36,6 +37,7 @@ describe('/v1/items', () => {
             expect(res.status).toBe(200);
             expect(res.body.item.id).toEqual(100);
             expect(res.body.item.author.id).toEqual(2);
+            expect(res.body.item.location_id).toEqual(4),
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([
@@ -49,7 +51,8 @@ describe('/v1/items', () => {
         it('should insert item with the given valid parameters and no images', async () => {
             // Given
             let item = { 
-                title: 'Hello', 
+                title: 'Hello',
+                location_id: 6,
                 description: 'This is a dummy text'
             };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
@@ -64,6 +67,7 @@ describe('/v1/items', () => {
             expect(res.status).toBe(200);
             expect(res.body.item.id).toEqual(101);
             expect(res.body.item.author.id).toEqual(2);
+            expect(res.body.item.location_id).toEqual(6),
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([]);
@@ -76,7 +80,8 @@ describe('/v1/items', () => {
             // Given
             let item = { 
                 title: 'Hello', 
-                description: 'This is a dummy text', 
+                description: 'This is a dummy text',
+                location_id: 4,
                 images: ['invalidImageId_0', 'invalidImageId_1'] };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
@@ -89,6 +94,44 @@ describe('/v1/items', () => {
             // Then
             expect(res.status).toBe(400);
             expect(res.body.code).toBe(12);
+        });
+
+        it('should return error when invalid location_id identifiers are given', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text',
+                location_id: 'invalid location identifier' };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/v1/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
+        });
+
+
+        it('should return error when request misses location_id', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text' };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/v1/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
         });
     
         it('should return error if user is not logged in', async () => {

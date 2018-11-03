@@ -21,3 +21,4 @@
 | 16   | Invalid page                            |
 | 17   | Invalid account identifier              |
 | 18   | Invalid search term                     |
+| 19   | Invalid location identifier             |

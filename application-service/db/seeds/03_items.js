@@ -11,6 +11,7 @@ exports.seed = function(knex) {
                     title: `Dummy Ad #${i}`, 
                     description: `Description of the dummy ad #${i}`,
                     author_id: i%2+1,
+                    location_id: i%26+1,
                     created_at: new Date(Date.now() - i*1000),
                     updated_at: new Date(Date.now() - i*1000)
                 });

@@ -21,7 +21,7 @@ const updateItemController = function(req, res) {
             itemById.save(
                 {
                     title: req.body.title,
-                    description: req.body.description,
+                    description: req.body.description
                 })
                 .then(function(saved) {
                     res.json({ saved });
