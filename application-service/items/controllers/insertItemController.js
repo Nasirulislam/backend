@@ -10,7 +10,7 @@ const insertItemController = function(req, res) {
         title: Joi.string().trim().max(100).min(4).required(),
         description: Joi.string().trim().max(1000).min(10).required(), 
         author_id: Joi.number().required(),
-        location_id: Joi.number().required(),
+        location_id: Joi.number().min(1).max(26).required(),
         images: Joi.array().items(Joi.string().regex(/^(.*)\.png/))
     };
  

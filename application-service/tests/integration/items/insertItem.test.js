@@ -133,6 +133,44 @@ describe('/v1/items', () => {
             expect(res.status).toBe(400);
             expect(res.body.code).toBe(19);
         });
+
+        it('should return error when given location_id is too low', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text',
+                location_id: 0 };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/v1/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
+        });
+
+        it('should return error when given location_id is too high', async () => {
+            // Given
+            let item = { 
+                title: 'Hello', 
+                description: 'This is a dummy text',
+                location_id: 30 };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .post('/v1/items')
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
+        });
     
         it('should return error if user is not logged in', async () => {
             // Given
