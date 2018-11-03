@@ -8,7 +8,7 @@ const Image = bookshelf.Model.extend({
 
     toJSON: function() {
         var attrs = bookshelf.Model.prototype.toJSON.apply(this, arguments);
-        attrs.path = `${process.env.IMAGES_BASE_URL}items`;
+        attrs.path = `${process.env.IMAGES_BASE_URL}items/`;
         return attrs;
     }
 });
