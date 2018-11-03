@@ -8,13 +8,15 @@ const fetchItemsController = function(req, res) {
     const schema = {
         page: Joi.number().min(1).default(1),
         term: Joi.string().allow('').max(1000).default('').trim(),
-        location_id: Joi.number().min(1).max(26)
+        location_id: Joi.number().min(1).max(26),
+        author_id: Joi.number()
     };
 
     const fethRequest = {
         page: req.query.page,
         term: req.query.term,
-        location_id: req.query.location_id
+        location_id: req.query.location_id,
+        author_id: req.query.author_id
     };
 
     Joi.validate(fethRequest, schema, function(error, value) {
@@ -25,6 +27,9 @@ const fetchItemsController = function(req, res) {
             }
             else if (path === 'term') {
                 return res.status(400).send({ code: 18 });
+            }
+            else if (path === 'author_id') {
+                return res.status(400).send({ code: 17 });
             }
             else if (path === 'location_id') {
                 return res.status(400).send({ code: 19 });
@@ -43,6 +48,10 @@ const fetchItemsController = function(req, res) {
 
                 if (value.location_id) {
                     qb.andWhere('location_id', '=', value.location_id);
+                }
+
+                if (value.author_id) {
+                    qb.andWhere('author_id', '=', value.author_id);
                 }
             })
             .orderBy('-updated_at')
