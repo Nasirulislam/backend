@@ -41,8 +41,8 @@ describe('/v1/items', () => {
             expect(res.body.item.title).toEqual('Hello');
             expect(res.body.item.description).toEqual('This is a dummy text');
             expect(res.body.item.images).toEqual([
-                { image: '2.1234.png', path: process.env.IMAGES_BASE_URL + 'items' }, 
-                { image: '2.4321.png', path: process.env.IMAGES_BASE_URL + 'items' }]);
+                { image: '2.1234.png', path: process.env.IMAGES_BASE_URL + 'items/' }, 
+                { image: '2.4321.png', path: process.env.IMAGES_BASE_URL + 'items/' }]);
 
             const resFetch = await request(server).get('/v1/items');
             expect(resFetch.body.total).toEqual(101);
