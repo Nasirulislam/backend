@@ -1,6 +1,7 @@
 'use strict';
 
 exports.up = function(knex) {
+    
     return knex.schema.createTable('accounts', function(table) {
         table.increments();
         table.boolean('is_verified').notNullable().defaultsTo(false);
@@ -12,12 +13,17 @@ exports.up = function(knex) {
         table.timestamp('updated_at').defaultTo(knex.fn.now());
         table.unique('username');
         table.unique('email');
+  
+    }).createTable('locations', function(table) {
+        table.increments();
+        table.string('name').notNullable();
 
     }).createTable('items', function(table) {
         table.increments();
         table.integer('author_id').unsigned().references('id').inTable('accounts').notNullable();
         table.string('title').notNullable();
         table.string('description').notNullable();
+        table.integer('location_id').unsigned().references('id').inTable('locations').notNullable();
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.fn.now());
         
@@ -26,9 +32,6 @@ exports.up = function(knex) {
         table.integer('item_id').unsigned().references('id').inTable('items').notNullable().onDelete('CASCADE');
         table.string('image').notNullable();
         
-    }).createTable('locations', function(table) {
-        table.increments();
-        table.string('name').notNullable();
     });
 };
 

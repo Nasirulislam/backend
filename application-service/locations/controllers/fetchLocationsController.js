@@ -7,7 +7,8 @@ const fetchLocationsController = function(req, res) {
 
     Location.fetchAll().then(function(locations) {
         const localizedLocations = locations.map(location => {
-            return { 
+            return {
+                id: location.get('id'),
                 name: localization.localizedString(req, localization.strings.Canton[location.get('name')]),
                 image: `${process.env.IMAGES_BASE_URL}locations/${location.get('name')}.png`
             };
