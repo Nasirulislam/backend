@@ -22,3 +22,4 @@
 | 17   | Invalid account identifier              |
 | 18   | Invalid search term                     |
 | 19   | Invalid location identifier             |
+| 20   | Invalid image type                      |

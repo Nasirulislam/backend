@@ -3,6 +3,7 @@
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const Joi = require('joi');
 
 const setUpAWS = function() {
     const spacesEndpoint = new aws.Endpoint(process.env.AWS_SPACES_ENDPOINT);
@@ -19,26 +20,47 @@ const hashCode = function(str) {
 };
 
 const uploadImageController = function(req, res) {
-    let fileName;
-    const upload = multer({
-        storage: multerS3({
-            s3: s3,
-            bucket: process.env.AWS_BUCKET_ID,
-            acl: 'public-read',
-            key: function (request, file, cb) {
-                fileName = req.user.id + '.' + hashCode(file.originalname) + '.png';
-                cb(null, `items/${fileName}`);
-            }
-        })
-    }).single('image');
 
-    upload(req, res, function(error) {
-        if (error) {
-            return res.status(500).send({ code: 14, error: 'Upload failure' });
+    const schema = {
+        type: Joi.string().valid('item', 'avatar').required()
+    };
+ 
+    const uploadImageRequest = {
+        type: req.body.type
+    };
+
+    Joi.validate(uploadImageRequest, schema, async function(error, value) {
+        if(error) {
+            return res.status(400).send({ code: 20 });
         }
-        else {
-            return res.status(200).send({ identifier: fileName });
-        }
+
+        let fileName;
+        const upload = multer({
+            storage: multerS3({
+                s3: s3,
+                bucket: process.env.AWS_BUCKET_ID,
+                acl: 'public-read',
+                key: function (request, file, cb) {
+                    if (value.type === 'item') {
+                        fileName = 'items' + req.user.id + '.' + hashCode(file.originalname) + '.png';
+                    }
+                    else {
+                        fileName = 'accounts' + req.user.id;
+                    }
+
+                    cb(null, fileName);
+                }
+            })
+        }).single('image');
+    
+        upload(req, res, function(error) {
+            if (error) {
+                return res.status(500).send({ code: 14, error: 'Upload failure' });
+            }
+            else {
+                return res.status(200).send({ identifier: fileName });
+            }
+        });
     });
 };
 

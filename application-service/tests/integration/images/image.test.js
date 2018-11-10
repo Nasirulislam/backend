@@ -3,7 +3,7 @@
 const request = require('supertest');
 
 let server;
-describe('/v1/items', () => {
+describe('/v1/images', () => {
     
     beforeEach(async () => {
         server = require('../../../app');
@@ -14,6 +14,7 @@ describe('/v1/items', () => {
     });
 
     describe('GET /:id', () => {
+
         it('should return image with given valid id', async () => {
             // Given
             const imageId = 'validImageId.png';
