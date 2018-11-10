@@ -13,7 +13,8 @@ const meController = async function(req, res) {
         account: {
             id: accountById.get('id'),
             username: accountById.get('username'),
-            email: accountById.get('email')
+            email: accountById.get('email'),
+            image: `${process.env.IMAGES_BASE_URL}accounts/${accountById.get('id')}`
         }
     });
 };

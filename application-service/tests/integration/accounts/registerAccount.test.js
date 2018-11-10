@@ -33,7 +33,8 @@ describe('/v1/accounts', () => {
                 account: {
                     id: 3,
                     username: 'test', 
-                    email: 'dummy@test.com'
+                    email: 'dummy@test.com',
+                    image: `${process.env.IMAGES_BASE_URL}accounts/3`
                 }
             });
             const resFetch = await knex.from('accounts').select();

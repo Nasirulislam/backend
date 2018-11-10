@@ -51,7 +51,8 @@ const changePasswordController = function(req, res) {
                     account: {
                         id: savedAccount.get('id'),
                         email: savedAccount.get('email'),
-                        username: savedAccount.get('username')
+                        username: savedAccount.get('username'),
+                        image: `${process.env.IMAGES_BASE_URL}accounts/${savedAccount.get('id')}`
                     }
                 });
             })

@@ -129,7 +129,8 @@ describe('/v1/accounts/password', () => {
                 account: {
                     id: 2,
                     username: 'test2',
-                    email: 'test2@mail.com'
+                    email: 'test2@mail.com',
+                    image: `${process.env.IMAGES_BASE_URL}accounts/2`
                 }
             });
 
