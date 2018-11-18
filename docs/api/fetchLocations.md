@@ -26,6 +26,10 @@ Returns all the locations
 
 ```json
 {
+    "all": {
+        "name": "Switzerland",
+        "image": "https://gzm.ams3.digitaloceanspaces.com/locations/all.png"
+    }
     "locations": [
         {
             "name": "Argovia",
