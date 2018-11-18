@@ -29,7 +29,7 @@ Returns all the locations
     "all": {
         "name": "Switzerland",
         "image": "https://gzm.ams3.digitaloceanspaces.com/locations/all.png"
-    }
+    },
     "locations": [
         {
             "name": "Argovia",
