@@ -57,25 +57,25 @@ const updateItemController = function(req, res) {
         if (itemById.get('author_id') === value.author_id) {
 
             if (value.title) {
-                itemById.title = value.title;
+                itemById.set('title', value.title);
             }
 
             if (value.description) {
-                itemById.description = value.description;
+                itemById.set('description ', value.description);
             }
 
             if (value.location_id) {
-                itemById.location_id = value.location_id;
+                itemById.set('location_id', value.location_id);
             }
 
             if (value.images) {
-                itemById.images = value.images;
+                itemById.set('images', value.images);
             }
 
             const savedItem = await itemById.save();
 
             if (savedItem) {
-                return res.status(200).json({ item: item });
+                return res.status(200).json({ item: savedItem });
             }
             else {
                 return res.status(500).json({});
