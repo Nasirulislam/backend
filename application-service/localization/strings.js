@@ -2,6 +2,12 @@
 
 const strings = {
     Canton: {
+        all: {
+            en: 'Switzerland',
+            de: 'Schweiz',
+            it: 'Svizzera',
+            fr: 'Suisse'
+        },
         aargau: {
             en: 'Aargau',
             de: 'Aargau',
