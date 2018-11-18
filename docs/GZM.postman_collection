@@ -14,7 +14,7 @@
 				{
 					"name": "Items",
 					"request": {
-						"url": "{{base}}/v1/items",
+						"url": "{{base}}/{{version}}/items",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -25,9 +25,15 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/v1/items/2",
+						"url": "{{base}}/{{version}}/items/2",
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "it",
+								"description": ""
+							}
+						],
 						"body": {},
 						"description": null
 					},
@@ -36,7 +42,7 @@
 				{
 					"name": "Items",
 					"request": {
-						"url": "{{base}}/v1/items",
+						"url": "{{base}}/{{version}}/items",
 						"method": "POST",
 						"header": [
 							{
@@ -52,7 +58,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"images\": [\"5.449616010.png\", \"5.65431324.png\"]\n}"
+							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"images\": [\"5.449616010.png\", \"5.65431324.png\"],\n  \"location_id\": 10\n}"
 						},
 						"description": null
 					},
@@ -61,7 +67,7 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/v1/items",
+						"url": "{{base}}/{{version}}/items",
 						"method": "PUT",
 						"header": [
 							{
@@ -86,7 +92,7 @@
 				{
 					"name": "Item",
 					"request": {
-						"url": "{{base}}/v1/items/2",
+						"url": "{{base}}/{{version}}/items/2",
 						"method": "DELETE",
 						"header": [
 							{
@@ -117,7 +123,7 @@
 				{
 					"name": "Register",
 					"request": {
-						"url": "{{base}}/v1/accounts",
+						"url": "{{base}}/{{version}}/accounts",
 						"method": "POST",
 						"header": [
 							{
@@ -154,7 +160,7 @@
 						}
 					],
 					"request": {
-						"url": "{{base}}/v1/accounts/login",
+						"url": "{{base}}/{{version}}/accounts/login",
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -179,21 +185,9 @@
 					"response": []
 				},
 				{
-					"name": "Logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var data = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"token\", data.token);"
-								]
-							}
-						}
-					],
+					"name": "Change Password",
 					"request": {
-						"url": "{{base}}/v1/accounts/logout",
+						"url": "{{base}}/{{version}}/accounts/password",
 						"method": "POST",
 						"header": [
 							{
@@ -208,22 +202,63 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "test1@mail.com",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "test",
-									"description": "",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n\t\"old\": \"asdf\",\n\t\"password\": \"test\"\n}"
 						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"url": "{{base}}/{{version}}/accounts/forgotpassword",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test1@mail.com\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{base}}/{{version}}/accounts/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
 						"description": null
 					},
 					"response": []
@@ -243,7 +278,7 @@
 						}
 					],
 					"request": {
-						"url": "{{base}}/v1/accounts/me",
+						"url": "{{base}}/{{version}}/accounts/me",
 						"method": "GET",
 						"header": [
 							{
@@ -287,7 +322,7 @@
 				{
 					"name": "Upload",
 					"request": {
-						"url": "{{base}}/v1/images",
+						"url": "{{base}}/{{version}}/images",
 						"method": "POST",
 						"header": [
 							{
@@ -301,9 +336,9 @@
 							"formdata": [
 								{
 									"key": "image",
+									"value": "",
 									"description": "",
-									"type": "file",
-									"src": "Screen Shot 2018-10-01 at 22.48.33.png"
+									"type": "file"
 								}
 							]
 						},
@@ -314,7 +349,7 @@
 				{
 					"name": "Fetch",
 					"request": {
-						"url": "{{base}}/v1/images/1.-1453231167.png",
+						"url": "{{base}}/{{version}}/images/1.-1453231167.png",
 						"method": "GET",
 						"header": [
 							{
@@ -332,6 +367,49 @@
 							"mode": "raw",
 							"raw": "{\n  \"title\": \"Soy laura\",\n  \"description\": \"Vendo mi bici\",\n  \"author\": \"Laura\",\n  \"images\": \"\"\n}"
 						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"description": "",
+			"item": [
+				{
+					"name": "Contact Item",
+					"request": {
+						"url": "{{base}}/{{version}}/contact/item/2",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"from\": \"dcorderoramirez@gmail.com\",\n  \"message\": \"This is a dummy message sent to the owner of the item\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locations",
+			"description": "",
+			"item": [
+				{
+					"name": "Locations",
+					"request": {
+						"url": "{{base}}/{{version}}/locations",
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": null
 					},
 					"response": []
