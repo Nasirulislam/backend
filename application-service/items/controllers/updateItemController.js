@@ -10,7 +10,6 @@ const updateItemController = function(req, res) {
         title: Joi.string().trim().max(100).min(4),
         description: Joi.string().trim().max(1000).min(10),
         location_id: Joi.number().min(1).max(26),
-        images: Joi.array().items(Joi.string().regex(/^(.*)\.png/)),
         author_id: Joi.number().required(),
     };
 
@@ -19,7 +18,6 @@ const updateItemController = function(req, res) {
         title: req.body.title,
         description: req.body.description,
         location_id: req.body.location_id,
-        images: req.body.images,
         author_id: req.user.id,
     };
 
@@ -34,9 +32,6 @@ const updateItemController = function(req, res) {
             }
             else if (path === 'description') {
                 return res.status(400).send({ code: 6 });
-            }
-            else if (path === 'images') {
-                return res.status(400).send({ code: 12 });
             }
             else if (path === 'location_id') {
                 return res.status(400).send({ code: 19 });
@@ -66,10 +61,6 @@ const updateItemController = function(req, res) {
 
             if (value.location_id) {
                 itemById.set('location_id', value.location_id);
-            }
-
-            if (value.images) {
-                itemById.set('images', value.images);
             }
 
             const savedItem = await itemById.save();

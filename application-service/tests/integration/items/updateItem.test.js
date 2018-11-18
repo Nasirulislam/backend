@@ -21,7 +21,11 @@ describe('/v1/items', () => {
         it('should update item with the given valid parameters', async () => {
             // Given
             const itemId = '1';
-            const item = { title: 'Edited item' };
+            const item = {
+                title: 'Edited item',
+                description: 'Edited description',
+                location_id: 26
+            };
             let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
 
             // When
@@ -34,6 +38,112 @@ describe('/v1/items', () => {
             expect(res.status).toBe(200);
             const resFetch = await request(server).get(`/v1/items/${itemId}`);
             expect(resFetch.body.item.title).toEqual('Edited item');
+            expect(resFetch.body.item.description).toEqual('Edited description');
+            expect(resFetch.body.item.location_id).toEqual(26);
+        });
+
+        it('should return error if the given new title is too short', async () => {
+            // Given
+            const itemId = '1';
+            const item = { title: 'A' };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(5);
+        });
+
+        it('should return error if the given new title is too long', async () => {
+            // Given
+            let title = Array(102).join('A');
+            const itemId = '1';
+            const item = { title };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(5);
+        });
+
+        it('should return error if the given new description is too short', async () => {
+            // Given
+            const itemId = '1';
+            const item = { description: 'A' };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(6);
+        });
+
+        it('should return error if the given new description is too long', async () => {
+            // Given
+            let description = Array(1002).join('A');
+            const itemId = '1';
+            const item = { description };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(6);
+        });
+
+        it('should return error if the given new location_id is too low', async () => {
+            // Given
+            const itemId = '1';
+            const item = { location_id: 0 };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
+        });
+
+        it('should return error if the given new location_id is too high', async () => {
+            // Given
+            const itemId = '1';
+            const item = { location_id: 27 };
+            let token = jwt.sign({ id: 2 }, process.env.JWT_SECRET);
+
+            // When
+            const res = await request(server)
+                .put(`/v1/items/${itemId}`)
+                .set('x-auth-token', token)
+                .send(item);
+
+            // Then
+            expect(res.status).toBe(400);
+            expect(res.body.code).toBe(19);
         });
 
         it('should return error if the item is not owned by the logged in user', async () => {
