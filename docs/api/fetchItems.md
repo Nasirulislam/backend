@@ -12,6 +12,7 @@ Returns all the items matching a given criteria
   
 **Parameters**
 
+- term: String to filter the result of the search. The search term is applied on titles and descriptions.
 - page: Paging offset, it takes will take the value 1 by default
 - author: Identifier of an user to filter items
 
