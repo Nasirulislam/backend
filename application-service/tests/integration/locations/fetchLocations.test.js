@@ -27,7 +27,7 @@ describe('/v1/locations', () => {
             expect(res.body.locations.length).toEqual(26);
             
             const locationAll = res.body.all.name;
-            expect(locationAll).toEqual('Switzerland');
+            expect(locationAll).toEqual('All Switzerland');
 
             const locationNames = res.body.locations.map(location => location.name);
             expect(locationNames).toEqual([
