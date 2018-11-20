@@ -3,8 +3,8 @@
 const strings = {
     Canton: {
         all: {
-            en: 'Switzerland',
-            de: 'Schweiz',
+            en: 'All Switzerland',
+            de: 'Die Ganze Schweiz',
             it: 'Svizzera',
             fr: 'Suisse'
         },

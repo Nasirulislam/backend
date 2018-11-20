@@ -22,5 +22,8 @@
     - [Upload image](./uploadImage.md)
     - [Fetch image](./fetchImage.md)
 
+* Contact:
+    - [Contact](./contact.md)
+
 * Errors:
     - [Error codes](./ErrorCodes.md)
