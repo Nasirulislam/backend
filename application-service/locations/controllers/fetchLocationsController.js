@@ -14,7 +14,13 @@ const fetchLocationsController = function(req, res) {
             };
         });
 
-        res.status(200).json({ locations: localizedLocations });
+        res.status(200).json({
+            all: {
+                name: localization.localizedString(req, localization.strings.Canton['all']),
+                image: `${process.env.IMAGES_BASE_URL}locations/all.png`
+            },
+            locations: localizedLocations
+        });
     });
 };
 
